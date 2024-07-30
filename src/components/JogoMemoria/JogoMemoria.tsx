@@ -18,13 +18,13 @@ const cartasInicio = [
 ]
 
 
-const embaralhar = (deck: Array<any>): Array<any> => {
+const embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
     const novoDeck = [...deck]
     for (let i = novoDeck.length - 1; i > 0; i--) {
         const j: number = Math.floor(Math.random() * i);
         [novoDeck[i], novoDeck[j]] = [novoDeck[j], novoDeck[i]]
     }
-    return deck
+    return novoDeck
 }
 
 
@@ -33,17 +33,28 @@ export const JogoMemoria = () => {
     const [cartasViradas, setCartasViradas] = useState<Array<number>>([])
     const [cartasAcertadas, setCartasAcertadas] = useState<Array<number>>([])
     const [pontos, setPontos] = useState(0);
+    const [jogoiniciado, setJogoIniciado] = useState(false);
 
+
+    
     useEffect(() => {
-        setBaralho(embaralhar(cartasInicio));
+        const iniciarJogo = async () => {
+            const deckEmbaralhado = await embaralhar(cartasInicio);
+            setBaralho(deckEmbaralhado);
+            setJogoIniciado(true)
+           }
+
+        iniciarJogo()
+
     }, [])
 
     useEffect(() => {
-        console.log(pontos)
-        fimDeJogo()
-    }, [pontos])
-
-    const fliparCarta = (id?: number, estado?: boolean) => {
+            fimDeJogo()
+    }, [cartasAcertadas, baralho.length])
+    
+   
+       
+    const fliparCarta =  async (id?: number, estado?: boolean) => {
         setBaralho(prevBaralho => prevBaralho.map(c => {
             if (cartasAcertadas.includes(c.id)) return c
             if (id !== undefined) return c.id === id ? { ...c, cartaVirada: !c.cartaVirada } : c
@@ -53,23 +64,21 @@ export const JogoMemoria = () => {
         ));
     }
 
-    const resetarJogo = () => {
-        fliparCarta(undefined, false);
+    const resetarJogo = async ()  => {
+        await fliparCarta(undefined, false);
         setCartasAcertadas([]);
         setCartasViradas([]);
-        setBaralho(embaralhar(cartasInicio));
+        const deckEmbaralhado = await embaralhar(cartasInicio)
+        setBaralho(deckEmbaralhado)
         setPontos(0);
     }
-    
-    const fimDeJogo = () => {
-        const quantidadeCartas = baralho.length;
-        console.log(quantidadeCartas);
-        console.log(cartasAcertadas.length)
-        if (cartasAcertadas.length === quantidadeCartas) {
+
+    const fimDeJogo = () : void => {
+        if (cartasAcertadas.length === baralho.length && jogoiniciado) {
             console.log("Você ganhou!!!!");
             setTimeout(() => {
                 resetarJogo()
-            }, 2000)
+            }, 1000)
         }
     };
 
@@ -77,7 +86,7 @@ export const JogoMemoria = () => {
         return baralho.find(c => c.id === cartaId)
     }
 
-    const onCardClick = (id: number) => {
+    const onCardClick = (id: number) : void => {
 
         if (cartasViradas.includes(id) || cartasViradas.length === 2 || cartasAcertadas.includes(id)) {
             return;
@@ -98,17 +107,11 @@ export const JogoMemoria = () => {
                 console.log("Você fez ponto!!");
                 setPontos(p => p + 10);
                 setCartasAcertadas(() => [...cartasAcertadas, primeiraCarta, segundaCarta]);
-              
-
-                setBaralho(prevBaralho => prevBaralho.map(c =>
-                    c.id === primeiraCarta || c.id === segundaCarta ? { ...c, cartaVirada: true } : c
-                )
-            );
+            
         }
             else {
-                setTimeout(() => fliparCarta(undefined, false), 1500)
+                setTimeout(() => fliparCarta(undefined, false), 1000)
             }
-
 
             setTimeout(() => setCartasViradas([]), 1000);
         }
