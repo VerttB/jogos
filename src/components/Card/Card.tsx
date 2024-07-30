@@ -9,7 +9,6 @@ interface Carta{
 
 
 export const Card: React.FC<Carta> = ({id, conteudo,cartaVirada, onCardClick}) => {
-    console.log(cartaVirada)
     return(
         <div onClick={() => onCardClick(id)} className={`carta ${cartaVirada ? 'cartaVirada disable' : '' }`} >
 

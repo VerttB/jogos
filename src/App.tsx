@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <JogoMemoria></JogoMemoria>
-      {/* <Tabuleiro></Tabuleiro> */}
+    
     </>
   )
 }
