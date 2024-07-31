@@ -1,9 +1,9 @@
-@use '../../assets/scss/functions.scss' as f;
-
+@use '../../assets/scss/functions.scss' as fun;
+@use '../../assets/scss/fonts.scss' as font;
 
 .carta{
     height: 16rem;
-    width: 8rem;
+    width: 9rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,19 +39,28 @@
 
 
     .conteudoFrente{
-        background-color: rgb(235, 235, 56);
+        background-color: #E7D37F ;
         color: black;
         transform: rotateY(180deg);
+        border: 2px solid #F5EDED;
         p {
-            font-size: f.toRem(64);
+            font-size: fun.toRem(92);
+            font-family: font.$Calistoga;
+            font-weight: 500;
+    
         }
     }
 
     .conteudoCosta{
-        background-color: rgb(214, 117, 48);
+        background-color: #134BA0;
         border: 2px solid #F5EDED;
         p{
-            font-size: f.toRem(128);
+            font-size: fun.toRem(128);
+            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: font.$Calistoga;
+            font-weight: bold;
         }
     }
     

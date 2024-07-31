@@ -1,5 +1,4 @@
 
-import './App.css'
 import { JogoMemoria } from './components/JogoMemoria/JogoMemoria'
 
 function App() {

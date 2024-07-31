@@ -2,21 +2,20 @@ import { useEffect, useState } from "react";
 import { Tabuleiro } from "../Tabuleiro/Tabuleiro"
 import "./jogoMemoria.css"
 
-const cartasInicio = [
-    { id: 1, conteudo: 'A', cartaVirada: false },
-    { id: 2, conteudo: 'A', cartaVirada: false },
-    { id: 3, conteudo: 'B', cartaVirada: false },
-    { id: 4, conteudo: 'B', cartaVirada: false },
-    { id: 5, conteudo: 'C', cartaVirada: false },
-    { id: 6, conteudo: 'C', cartaVirada: false },
-    { id: 7, conteudo: 'D', cartaVirada: false },
-    { id: 8, conteudo: 'D', cartaVirada: false },
-    { id: 9, conteudo: 'E', cartaVirada: false },
-    { id: 10, conteudo: 'E', cartaVirada: false },
-    { id: 11, conteudo: 'F', cartaVirada: false },
-    { id: 12, conteudo: 'F', cartaVirada: false }
-]
 
+
+const geradorDeCarta = () => {
+    const cartas = []
+    for(let i = 0; i <27;i++){
+        const carta = {id: 2 * i + 1, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
+        const cartaRepetida = {id: 2 * i + 2, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
+        cartas.push(carta);
+        cartas.push(cartaRepetida)
+    }
+    return cartas;
+}
+
+const cartasInicio = geradorDeCarta()
 
 const embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
     const novoDeck = [...deck]
