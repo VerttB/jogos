@@ -1,0 +1,8 @@
+@use 'sass:math';
+
+
+@function toRem($font){
+    $font: math.div($font, 16) + rem;
+    
+    @return $font;
+}

@@ -1,5 +1,5 @@
 import { Card } from "../Card/Card";
-import "./tabuleiro.css"
+import "./tabuleiro.scss"
 
 interface CartaDados{
     id: number

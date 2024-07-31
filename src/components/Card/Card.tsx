@@ -1,4 +1,4 @@
-import "./Card.css"
+import "./Card.scss"
 
 interface Carta{
     id: number
@@ -10,10 +10,10 @@ interface Carta{
 
 export const Card: React.FC<Carta> = ({id, conteudo,cartaVirada, onCardClick}) => {
     return(
-        <div onClick={() => onCardClick(id)} className={`carta ${cartaVirada ? 'cartaVirada disable' : '' }`} >
+        <div onClick={() => onCardClick(id)} className={`carta ${cartaVirada ? 'cartaVirada' : '' }`} >
 
-            <div className="conteudoFrente">{conteudo}</div>
-            <div className="conteudoCosta">?</div>
+            <div className="conteudoFrente"><p>{conteudo}</p></div>
+            <div className="conteudoCosta"><p>?</p></div>
         </div>
     )
 }
