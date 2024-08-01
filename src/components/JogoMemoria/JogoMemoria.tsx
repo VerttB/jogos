@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Tabuleiro } from "../Tabuleiro/Tabuleiro"
-import "./jogoMemoria.css"
+import "./jogoMemoria.scss"
 
 
 
 const geradorDeCarta = () => {
     const cartas = []
-    for(let i = 0; i <27;i++){
+    for(let i = 0; i <16;i++){
         const carta = {id: 2 * i + 1, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         const cartaRepetida = {id: 2 * i + 2, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         cartas.push(carta);

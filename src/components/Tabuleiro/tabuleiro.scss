@@ -1,11 +1,12 @@
 .tabuleiro{
-    margin-top: 15px;
+   margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 80%;
+    height: 70%;
     justify-content: center;
     align-content: start;
     gap: 1.25rem;
-    flex-shrink: 2;
+    
     
 }

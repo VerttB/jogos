@@ -1,9 +1,12 @@
 @use '../../assets/scss/functions.scss' as fun;
 @use '../../assets/scss/fonts.scss' as font;
+@use 'sass:math';
 
 .carta{
-    height: 16rem;
-    width: 9rem;
+    
+    height: calc(var(--tamanho) * 2rem);
+    width: calc(var(--tamanho) * 1.5rem);
+ 
     display: flex;
     align-items: center;
     justify-content: center;

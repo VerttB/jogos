@@ -7,7 +7,6 @@ interface Carta{
     onCardClick: (id: number) => void,
 }
 
-
 export const Card: React.FC<Carta> = ({id, conteudo,cartaVirada, onCardClick}) => {
     return(
         <div onClick={() => onCardClick(id)} className={`carta ${cartaVirada ? 'cartaVirada' : '' }`} >
