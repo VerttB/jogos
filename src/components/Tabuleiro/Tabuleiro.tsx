@@ -14,9 +14,9 @@ interface TabuleiroProps{
 }
 
 export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) => {
-    const numColunas = Math.ceil(Math.sqrt(baralho.length))
+    const numColunas = Math.floor(Math.sqrt(baralho.length))
     return(
-        <div className="tabuleiro" style={{ gridTemplateColumns: `repeat(${numColunas}, 1fr)` }}>
+        <div className="tabuleiro">
             {baralho.map(b => 
                 <Card key={b.id}
                 id={b.id}

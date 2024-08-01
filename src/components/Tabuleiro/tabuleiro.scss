@@ -1,4 +1,11 @@
 .tabuleiro{
-    display: grid;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
+    align-content: start;
     gap: 1.25rem;
+    flex-shrink: 2;
+    
 }
