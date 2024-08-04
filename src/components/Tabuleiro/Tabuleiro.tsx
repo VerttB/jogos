@@ -15,7 +15,11 @@ interface TabuleiroProps{
 }
 
 export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) => {
-    const tamanhoCartas = {"--tamanho" : Math.floor(Math.sqrt(baralho.length))} as React.CSSProperties
+    const tamanhoMultiplicador = (baralho.length <= 16 ? 1.4 
+                                  :baralho.length <= 32 ? 1.8 : 2.3);
+    console.log(tamanhoMultiplicador)
+    console.log(baralho.length)
+    const tamanhoCartas = {"--tamanho" : 100 /baralho.length * tamanhoMultiplicador} as React.CSSProperties
     console.log(tamanhoCartas)
     return(
         <div className="tabuleiro" style={tamanhoCartas}>

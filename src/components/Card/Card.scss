@@ -1,6 +1,6 @@
 @use '../../assets/scss/functions.scss' as fun;
 @use '../../assets/scss/fonts.scss' as font;
-@use 'sass:math';
+
 
 .carta{
     
@@ -60,6 +60,7 @@
         p{
             font-size: fun.toRem(128);
             background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-family: font.$Calistoga;

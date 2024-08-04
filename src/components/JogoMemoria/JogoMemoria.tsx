@@ -6,7 +6,7 @@ import "./jogoMemoria.scss"
 
 const geradorDeCarta = () => {
     const cartas = []
-    for(let i = 0; i <16;i++){
+    for(let i = 0; i < 6;i++){
         const carta = {id: 2 * i + 1, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         const cartaRepetida = {id: 2 * i + 2, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         cartas.push(carta);
@@ -31,7 +31,6 @@ export const JogoMemoria = () => {
     const [baralho, setBaralho] = useState<Array<any>>([])
     const [cartasViradas, setCartasViradas] = useState<Array<number>>([])
     const [cartasAcertadas, setCartasAcertadas] = useState<Array<number>>([])
-    const [pontos, setPontos] = useState(0);
     const [jogoiniciado, setJogoIniciado] = useState(false);
 
 
@@ -69,7 +68,7 @@ export const JogoMemoria = () => {
         setCartasViradas([]);
         const deckEmbaralhado = await embaralhar(cartasInicio)
         setBaralho(deckEmbaralhado)
-        setPontos(0);
+       
     }
 
     const fimDeJogo = () : void => {
@@ -103,8 +102,7 @@ export const JogoMemoria = () => {
             const segundaCartaConteudo = encontrarCarta(segundaCarta).conteudo
 
             if (primeiraCartaConteudo === segundaCartaConteudo) {
-                console.log("Você fez ponto!!");
-                setPontos(p => p + 10);
+
                 setCartasAcertadas(() => [...cartasAcertadas, primeiraCarta, segundaCarta]);
             
         }
