@@ -1,0 +1,6 @@
+@use '../../assets/scss/functions.scss' as fun;
+.seletor{
+    display: flex;
+    flex-direction: column;
+    gap: fun.toRem(4) ;
+}

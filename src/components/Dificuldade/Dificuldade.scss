@@ -1,0 +1,20 @@
+@use '../../assets/scss/functions.scss' as fun;
+@use '../../assets/scss/fonts.scss' as f;
+.dificuldade{
+    cursor:pointer;
+    display: flex;
+    width: fun.toRem(512);
+    background-color: #021526;
+    border-radius: 8px;
+    height: fun.toRem(48);
+    align-items: center;
+    justify-content: center;
+    margin: fun.toRem(4) 0;
+    color: white;
+    font: f.$Poppins;
+    font-size: fun.toRem(32);
+}
+
+.dificuldade:hover{
+    background-color: rgba(245, 245, 220, 0.39);
+}

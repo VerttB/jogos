@@ -1,12 +1,29 @@
 import { useEffect, useState } from "react";
 import { Tabuleiro } from "../Tabuleiro/Tabuleiro"
 import "./jogoMemoria.scss"
+import Seletor from "../../Seletor/Seletor";
 
 
 
-const geradorDeCarta = () => {
+const geradorDeCarta = (dificuldade: string) => {
+    let quantidadeCartas: number;
+    switch(dificuldade){
+        case "FACIL":
+            quantidadeCartas = 6; 
+            break;
+        case "MEDIO":
+            quantidadeCartas = 16;
+            break;
+        case "DIFICIL":
+            quantidadeCartas = 27;
+            break;
+        default:
+            quantidadeCartas = 12;
+            break;
+    }
+
     const cartas = []
-    for(let i = 0; i < 6;i++){
+    for(let i = 0; i < quantidadeCartas;i++){
         const carta = {id: 2 * i + 1, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         const cartaRepetida = {id: 2 * i + 2, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
         cartas.push(carta);
@@ -15,7 +32,7 @@ const geradorDeCarta = () => {
     return cartas;
 }
 
-const cartasInicio = geradorDeCarta()
+
 
 const embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
     const novoDeck = [...deck]
@@ -32,27 +49,30 @@ export const JogoMemoria = () => {
     const [cartasViradas, setCartasViradas] = useState<Array<number>>([])
     const [cartasAcertadas, setCartasAcertadas] = useState<Array<number>>([])
     const [jogoiniciado, setJogoIniciado] = useState(false);
+    const [dificuldade, setDificuldade] = useState("");
 
 
     
     useEffect(() => {
         const iniciarJogo = async () => {
-            const deckEmbaralhado = await embaralhar(cartasInicio);
-            setBaralho(deckEmbaralhado);
-            setJogoIniciado(true)
+            if(dificuldade){
+                const deckEmbaralhado = await embaralhar(geradorDeCarta(dificuldade));
+                setBaralho(deckEmbaralhado);
+                setJogoIniciado(true)
+            }
            }
 
         iniciarJogo()
 
-    }, [])
+    }, [dificuldade])
 
     useEffect(() => {
             fimDeJogo()
     }, [cartasAcertadas, baralho.length])
     
-   
-       
+
     const fliparCarta =  async (id?: number, estado?: boolean) => {
+        console.log(dificuldade)
         setBaralho(prevBaralho => prevBaralho.map(c => {
             if (cartasAcertadas.includes(c.id)) return c
             if (id !== undefined) return c.id === id ? { ...c, cartaVirada: !c.cartaVirada } : c
@@ -66,7 +86,8 @@ export const JogoMemoria = () => {
         await fliparCarta(undefined, false);
         setCartasAcertadas([]);
         setCartasViradas([]);
-        const deckEmbaralhado = await embaralhar(cartasInicio)
+        setDificuldade("");
+        const deckEmbaralhado = await embaralhar(geradorDeCarta(dificuldade))
         setBaralho(deckEmbaralhado)
        
     }
@@ -115,8 +136,12 @@ export const JogoMemoria = () => {
 
     }
     return (
+       
         <div className="jogo-inicio">
+            {
+            dificuldade === "" ? <Seletor setDificuldade={setDificuldade}></Seletor> :
             <Tabuleiro onCardClick={onCardClick} baralho={baralho}></Tabuleiro>
+        }
         </div>
     )
 }

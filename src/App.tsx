@@ -1,5 +1,5 @@
 
-import { JogoMemoria } from './components/JogoMemoria/JogoMemoria'
+import { JogoMemoria } from './components/JogoDaMemoria/JogoMemoria/JogoMemoria'
 
 function App() {
   
