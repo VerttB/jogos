@@ -1,4 +1,4 @@
-import Dificuldade from "../Dificuldade/Dificuldade";
+import Dificuldade from "../Dificuldade";
 import './Seletor.scss'
 export default function Seletor({setDificuldade}:any){
     return(

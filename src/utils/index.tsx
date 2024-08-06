@@ -1,0 +1,1 @@
+export { Embaralhar} from './Embaralhar'

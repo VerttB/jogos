@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Tabuleiro } from "../Tabuleiro/Tabuleiro"
+import { Tabuleiro } from "../Tabuleiro"
 import "./jogoMemoria.scss"
-import Seletor from "../../Seletor/Seletor";
+import Seletor from "../../Seletor";
+import { Embaralhar } from "../../../utils";
 
 
 
@@ -34,14 +35,16 @@ const geradorDeCarta = (dificuldade: string) => {
 
 
 
-const embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
-    const novoDeck = [...deck]
-    for (let i = novoDeck.length - 1; i > 0; i--) {
-        const j: number = Math.floor(Math.random() * i);
-        [novoDeck[i], novoDeck[j]] = [novoDeck[j], novoDeck[i]]
-    }
-    return novoDeck
-}
+// const Embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
+//     const novoDeck = [...deck]
+//     for (let i = novoDeck.length - 1; i > 0; i--) {
+//         const j: number = Math.floor(Math.random() * i);
+//         [novoDeck[i], novoDeck[j]] = [novoDeck[j], novoDeck[i]]
+//     }
+//     return novoDeck
+// }
+
+
 
 
 export const JogoMemoria = () => {
@@ -56,7 +59,7 @@ export const JogoMemoria = () => {
     useEffect(() => {
         const iniciarJogo = async () => {
             if(dificuldade){
-                const deckEmbaralhado = await embaralhar(geradorDeCarta(dificuldade));
+                const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
                 setBaralho(deckEmbaralhado);
                 setJogoIniciado(true)
             }
@@ -87,7 +90,7 @@ export const JogoMemoria = () => {
         setCartasAcertadas([]);
         setCartasViradas([]);
         setDificuldade("");
-        const deckEmbaralhado = await embaralhar(geradorDeCarta(dificuldade))
+        const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade))
         setBaralho(deckEmbaralhado)
        
     }
