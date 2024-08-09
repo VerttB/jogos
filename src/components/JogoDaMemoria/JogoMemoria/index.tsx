@@ -3,7 +3,7 @@ import { Tabuleiro } from "../Tabuleiro"
 import "./jogoMemoria.scss"
 import Seletor from "../../Seletor";
 import { Embaralhar } from "../../../utils";
-import { Menu } from "../../Menu";
+import { Menu } from "../../MenuSecundario";
 import { Dificuldade } from "../../../enums/Dificuldade-enum";
 
 

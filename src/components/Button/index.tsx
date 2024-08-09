@@ -1,4 +1,3 @@
-import './Button.scss'
 type ButtonProps = {
     onClick : () => void
     children : String,
