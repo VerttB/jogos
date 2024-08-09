@@ -1,12 +1,13 @@
 @use '../../../assets/scss/functions.scss' as fun;
 @use '../../../assets/scss/fonts.scss' as font;
+@use '../../../assets/scss/images.scss' as image;
 
 
 .carta{
     
     height: calc(var(--tamanho) * 2rem);
     width: calc(var(--tamanho) * 1.5rem);
- 
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,6 +39,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 8px;
     }
 
 
@@ -47,7 +49,7 @@
         transform: rotateY(180deg);
         border: 2px solid #F5EDED;
         p {
-            font-size: fun.toRem(92);
+            font-size: calc(var(--tamanho) * fun.toRem(16));
             font-family: font.$Calistoga;
             font-weight: 500;
     
@@ -55,11 +57,12 @@
     }
 
     .conteudoCosta{
-        background-color: #134BA0;
+
+        background-image: image.$cartaFundo;
         border: 2px solid #F5EDED;
+        
         p{
-            font-size: fun.toRem(128);
-            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
+            font-size: calc(var(--tamanho) * fun.toRem(16));            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -70,12 +73,5 @@
     
 }
 
-
-
-
-
-/* .conteudoCosta:hover, .conteudoCosta:hover {
-    transform: translateY(-10px);
-} */
 
 
