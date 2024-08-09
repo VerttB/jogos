@@ -2,5 +2,12 @@
 .seletor{
     display: flex;
     flex-direction: column;
-    gap: fun.toRem(4) ;
+    gap: fun.toRem(4);
+    text-align: center;
+    align-items: center;
+
+    .titulo{
+        color: white;
+        font-size: fun.toRem(64);
+    }
 }

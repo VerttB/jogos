@@ -3,6 +3,8 @@ import { Tabuleiro } from "../Tabuleiro"
 import "./jogoMemoria.scss"
 import Seletor from "../../Seletor";
 import { Embaralhar } from "../../../utils";
+import { Menu } from "../../Menu";
+import { Dificuldade } from "../../../enums/Dificuldade-enum";
 
 
 
@@ -10,16 +12,16 @@ const geradorDeCarta = (dificuldade: string) => {
     let quantidadeCartas: number;
     switch(dificuldade){
         case "FACIL":
-            quantidadeCartas = 6; 
+            quantidadeCartas = Dificuldade.FACIL; 
             break;
         case "MEDIO":
-            quantidadeCartas = 16;
+            quantidadeCartas = Dificuldade.MEDIO;
             break;
         case "DIFICIL":
-            quantidadeCartas = 27;
+            quantidadeCartas = Dificuldade.DIFICIL;
             break;
         default:
-            quantidadeCartas = 12;
+            quantidadeCartas = Dificuldade.MEDIO;
             break;
     }
 
@@ -32,19 +34,6 @@ const geradorDeCarta = (dificuldade: string) => {
     }
     return cartas;
 }
-
-
-
-// const Embaralhar =  async (deck: Array<any>): Promise<Array<any>> => {
-//     const novoDeck = [...deck]
-//     for (let i = novoDeck.length - 1; i > 0; i--) {
-//         const j: number = Math.floor(Math.random() * i);
-//         [novoDeck[i], novoDeck[j]] = [novoDeck[j], novoDeck[i]]
-//     }
-//     return novoDeck
-// }
-
-
 
 
 export const JogoMemoria = () => {
@@ -145,6 +134,8 @@ export const JogoMemoria = () => {
             dificuldade === "" ? <Seletor setDificuldade={setDificuldade}></Seletor> :
             <Tabuleiro onCardClick={onCardClick} baralho={baralho}></Tabuleiro>
         }
+
+        {/* <Menu></Menu> */}
         </div>
     )
 }
