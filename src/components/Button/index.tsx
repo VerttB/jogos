@@ -1,9 +1,9 @@
 type ButtonProps = {
-    onClick : () => void
     children : String,
+    onClick?: () => void
 }
 
-export default function Button({onClick, children} : ButtonProps){
+export default function Button({children, onClick} : ButtonProps){
     return(
         <button className='button' onClick={onClick}> 
             {children}

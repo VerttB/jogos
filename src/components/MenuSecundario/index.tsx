@@ -1,26 +1,23 @@
 import Button from "../Button";
 import './MenuSecundario.scss';
+import { useNavigate} from "react-router-dom";
+interface MenuSecundarioProps {
+    fecharMenu : (status : boolean) => void;
+    regras : string;
+}
 
-
-export const MenuSecundario = () => {
-
-    const jogar = () => {
-        console.log("Jogando");
-    }
-
-    const regras = () => {
-        console.log("regras");
-    }
-
+export const MenuSecundario: React.FC<MenuSecundarioProps> = ({ fecharMenu, regras}) => {
+    const navegar = useNavigate();
     const menuPrincipal = () => {
-        console.log("Menu Principal")
+        navegar('/');
     }
+
     return(
         <div className="menuSecundario">
             <h3 className="titulo">Menu</h3>
-            <Button onClick={jogar}>Jogar</Button>
-            <Button onClick={regras}>Regras</Button>
-            <Button onClick={menuPrincipal}>Menu Principal</Button>
+            <Button onClick={() => fecharMenu(false)}>Jogar</Button>
+            <Button>{regras}</Button>
+            <Button onClick={menuPrincipal}>Menu Principal</Button> 
         </div>
     )
 

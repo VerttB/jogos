@@ -1,6 +1,10 @@
 import Dificuldade from "../Dificuldade";
 import './Seletor.scss'
-export default function Seletor({setDificuldade}:any){
+
+interface SeletorProps{
+    setDificuldade : () => void
+}
+export default function Seletor({setDificuldade}:SeletorProps){
     return(
         <div className="seletor">
             <h3 className="titulo">Escolha a Dificuldade</h3>

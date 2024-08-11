@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import { Tabuleiro } from "../Tabuleiro"
 import "./jogoMemoria.scss"
 import Seletor from "../../Seletor";
 import { Embaralhar } from "../../../utils";
-import { Menu } from "../../MenuSecundario";
 import { Dificuldade } from "../../../enums/Dificuldade-enum";
+import { MenuSecundario } from "../../MenuSecundario";
 
 
 
@@ -23,7 +23,7 @@ const geradorDeCarta = (dificuldade: string) => {
         default:
             quantidadeCartas = Dificuldade.MEDIO;
             break;
-    }
+}
 
     const cartas = []
     for(let i = 0; i < quantidadeCartas;i++){
@@ -42,21 +42,26 @@ export const JogoMemoria = () => {
     const [cartasAcertadas, setCartasAcertadas] = useState<Array<number>>([])
     const [jogoiniciado, setJogoIniciado] = useState(false);
     const [dificuldade, setDificuldade] = useState("");
+    const [showMenu, setShowMenu] = useState(true);
 
 
+    const iniciarJogo = async () => {
+        if(dificuldade){
+            const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
+            setBaralho(deckEmbaralhado);
+            setJogoIniciado(true);
+            setShowMenu(false);
+        }
+       }
     
+    const handleShowMenuChange = (status : boolean) : void => {
+        setShowMenu(status)
+    }
+
     useEffect(() => {
-        const iniciarJogo = async () => {
-            if(dificuldade){
-                const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
-                setBaralho(deckEmbaralhado);
-                setJogoIniciado(true)
-            }
-           }
-
         iniciarJogo()
-
     }, [dificuldade])
+
 
     useEffect(() => {
             fimDeJogo()
@@ -75,13 +80,11 @@ export const JogoMemoria = () => {
     }
 
     const resetarJogo = async ()  => {
+        setShowMenu(true);
         await fliparCarta(undefined, false);
         setCartasAcertadas([]);
         setCartasViradas([]);
         setDificuldade("");
-        const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade))
-        setBaralho(deckEmbaralhado)
-       
     }
 
     const fimDeJogo = () : void => {
@@ -131,11 +134,16 @@ export const JogoMemoria = () => {
        
         <div className="jogo-inicio">
             {
-            dificuldade === "" ? <Seletor setDificuldade={setDificuldade}></Seletor> :
+            showMenu 
+            ? 
+            <MenuSecundario fecharMenu={handleShowMenuChange} regras={""}/> 
+            :
+            dificuldade === "" ?
+            <Seletor setDificuldade={setDificuldade}></Seletor> 
+            :
             <Tabuleiro onCardClick={onCardClick} baralho={baralho}></Tabuleiro>
         }
-
-        {/* <Menu></Menu> */}
+       
         </div>
     )
 }
