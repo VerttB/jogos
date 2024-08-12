@@ -1,19 +1,13 @@
-import InputBtn from "../InputBtn"
-
+import Button from '../../Button';
+import TabuleiroJogoVelha from '../TabuleiroJogoVelha';
+import './JogoDaVelha.scss';
 
 export const JogoDaVelha = () =>{
-    const quantidadeQuadrados = 9;
-    const inputGrids = [];
-
-    const iniciarJogo = () => {
-        for (let i = 0; i < quantidadeQuadrados; i++) {
-            inputGrids.push(<InputBtn></InputBtn>)
-        }
-    }
+  
 
     return(
         <div className="jogoDaVelha">
-            {inputGrids.map(inp => inp)}
+           <TabuleiroJogoVelha></TabuleiroJogoVelha>
         </div>
     )
 }

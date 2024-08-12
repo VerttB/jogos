@@ -1,5 +1,5 @@
 type ButtonProps = {
-    children : String,
+    children? : String,
     onClick?: () => void
 }
 

@@ -2,7 +2,7 @@ import Dificuldade from "../Dificuldade";
 import './Seletor.scss'
 
 interface SeletorProps{
-    setDificuldade : () => void
+    setDificuldade : React.Dispatch<React.SetStateAction<string>>;
 }
 export default function Seletor({setDificuldade}:SeletorProps){
     return(

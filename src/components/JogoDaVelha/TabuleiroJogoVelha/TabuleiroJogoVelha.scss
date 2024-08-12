@@ -1,0 +1,21 @@
+@use 'sass:color';
+
+.tabuleiroJogoVelha{
+        display: grid;
+        width: 25%;
+        height: 50%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        background-color: rgb(0, 0, 0);
+        
+        .button{
+            background-color: rgb(39, 37, 71);
+            border: none;
+            cursor: pointer;
+            color: white;
+            &:hover{
+                background-color: color.scale(rgb(39, 37, 71), $lightness: 10%);
+            }
+        }
+    
+}

@@ -1,3 +1,5 @@
+@use '../../../assets/scss/variables.scss' as v;
+
 .jogo-inicio{
     display: flex;
     flex-direction: column;
@@ -6,6 +8,6 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: #021526
+    background-color: v.$bg-dark;
 }
 
