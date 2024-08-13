@@ -1,6 +1,6 @@
 type ButtonProps = {
     children? : String,
-    onClick?: () => void
+    onClick?: (event?:any) => void
 }
 
 export default function Button({children, onClick} : ButtonProps){
