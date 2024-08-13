@@ -67,12 +67,20 @@ export const JogoMemoria = () => {
 
 
     useEffect(() => {
+        const fimDeJogo = () : void => {
+            if (cartasAcertadas.length === baralho.length && jogoiniciado) {
+                console.log("Você ganhou!!!!");
+                setTimeout(() => {
+                    resetarJogo()
+                }, 1000)
+            }
+        };
+
             fimDeJogo()
     }, [cartasAcertadas, baralho.length])
     
 
     const fliparCarta =  async (id?: number, estado?: boolean) => {
-        console.log(dificuldade)
         setBaralho(prevBaralho => prevBaralho.map(c => {
             if (cartasAcertadas.includes(c.id)) return c
             if (id !== undefined) return c.id === id ? { ...c, cartaVirada: !c.cartaVirada } : c
@@ -90,14 +98,7 @@ export const JogoMemoria = () => {
         setDificuldade("");
     }
 
-    const fimDeJogo = () : void => {
-        if (cartasAcertadas.length === baralho.length && jogoiniciado) {
-            console.log("Você ganhou!!!!");
-            setTimeout(() => {
-                resetarJogo()
-            }, 1000)
-        }
-    };
+  
 
     const encontrarCarta = (cartaId : number) => {
         return baralho.find(c => c.id === cartaId)
@@ -121,7 +122,6 @@ export const JogoMemoria = () => {
             const segundaCartaConteudo = encontrarCarta(segundaCarta).conteudo
 
             if (primeiraCartaConteudo === segundaCartaConteudo) {
-
                 setCartasAcertadas(() => [...cartasAcertadas, primeiraCarta, segundaCarta]);
             
         }

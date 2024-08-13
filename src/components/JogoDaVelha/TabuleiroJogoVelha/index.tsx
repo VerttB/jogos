@@ -5,14 +5,14 @@ import './TabuleiroJogoVelha.scss'
 export default function TabuleiroJogoVelha(){
 
    const jogar = (e : any ) => {
-     e.target.setAttribute('disabled', '')
+     e.target.innerText = 'X'
    }
 
 
 
     return(
         <div className='tabuleiroJogoVelha'>
-            {[...Array(9)].map((_, i) => <div key={i} className="area" onClick={jogar}></div>)}
+            {[...Array(9)].map((_, i) => <Button  key={i} onClick={jogar}>{''}</Button>)}
         </div>
     )
 }
