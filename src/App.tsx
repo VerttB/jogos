@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {jogosPath.map((jp) => <Route path={jp.caminho} element={jp.componente}/>)} 
+        {jogosPath.map((jp) => <Route key={jp.nome} path={jp.caminho} element={jp.componente}/>)} 
         {/* // <Route path='/' element={<MenuPrincipal/>}></Route>
         // <Route path="/jogo-da-memoria" element={<JogoMemoria/>}></Route> */}
       </Routes>

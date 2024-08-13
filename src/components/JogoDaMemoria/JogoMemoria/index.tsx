@@ -3,35 +3,38 @@ import { Tabuleiro } from "../Tabuleiro"
 import "./jogoMemoria.scss"
 import Seletor from "../../Seletor";
 import { Embaralhar } from "../../../utils";
-import { Dificuldade } from "../../../enums/Dificuldade-enum";
+import { DificuldadeMemoria } from "../../../enums/Dificuldade-enum";
 import { MenuSecundario } from "../../MenuSecundario";
 
 
-
-const geradorDeCarta = (dificuldade: string) => {
-    let quantidadeCartas: number;
+const selecionaDificuldade = (dificuldade : string) => {
     switch(dificuldade){
         case "FACIL":
-            quantidadeCartas = Dificuldade.FACIL; 
-            break;
+            return DificuldadeMemoria.FACIL; 
+            
         case "MEDIO":
-            quantidadeCartas = Dificuldade.MEDIO;
-            break;
+            return DificuldadeMemoria.MEDIO;
+            
         case "DIFICIL":
-            quantidadeCartas = Dificuldade.DIFICIL;
-            break;
+            return DificuldadeMemoria.DIFICIL;
+            
         default:
-            quantidadeCartas = Dificuldade.MEDIO;
-            break;
+            return DificuldadeMemoria.MEDIO;
+         
 }
+}
+
+const geradorDeCarta = (dificuldade: string) => {
+    let quantidadeCartas: number = selecionaDificuldade(dificuldade)
 
     const cartas = []
     for(let i = 0; i < quantidadeCartas;i++){
-        const carta = {id: 2 * i + 1, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
-        const cartaRepetida = {id: 2 * i + 2, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
-        cartas.push(carta);
-        cartas.push(cartaRepetida)
+        for( let j = 1; j<3;j++){
+            const carta = {id: 2 * i + j, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
+            cartas.push(carta);
+        }
     }
+
     return cartas;
 }
 
