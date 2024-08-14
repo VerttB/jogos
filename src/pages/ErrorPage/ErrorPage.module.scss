@@ -1,7 +1,7 @@
 @use '../../assets/scss/variables.scss' as v;
 @use '../../assets/scss/fonts.scss' as f;
 @use '../../assets/scss/functions.scss' as fun;
-
+@use '../../assets/scss/mixnins.scss' as m;
 
 .errorPage{
     height: 100vh;
@@ -13,15 +13,11 @@
     flex-direction: column;
 
     .titulo{
-        font-family: f.$Poppins;
-        font-size: fun.toRem(64);
-        color: white;
+        @include m.text-format(fun.toRem(64), white, f.$Poppins);
     }
 
     .paragrafo{
-        font-family: f.$Poppins;
-        font-size: fun.toRem(32);
-        color: white;
+        @include m.text-format(fun.toRem(32), white, f.$Poppins);
     }
 
 }
