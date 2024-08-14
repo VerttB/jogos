@@ -1,42 +1,11 @@
-import { useEffect, useState, createContext } from "react";
-import { Tabuleiro } from "../Tabuleiro";
+import { useEffect, useState } from "react";
+import { geradorDeCarta } from "../../components/JogoDaMemoria/jogoMemoria.Config";
+import { Tabuleiro } from "../../components/JogoDaMemoria/Tabuleiro";
 import style from "./JogoMemoria.module.scss";
-import Seletor from "../../Seletor";
-import { Embaralhar } from "../../../utils";
-import { DificuldadeMemoria } from "../../../enums/Dificuldade-enum";
-import { MenuSecundario } from "../../MenuSecundario";
-
-
-const selecionaDificuldade = (dificuldade : string) => {
-    switch(dificuldade){
-        case "FACIL":
-            return DificuldadeMemoria.FACIL; 
-            
-        case "MEDIO":
-            return DificuldadeMemoria.MEDIO;
-            
-        case "DIFICIL":
-            return DificuldadeMemoria.DIFICIL;
-            
-        default:
-            return DificuldadeMemoria.MEDIO;
-         
-}
-}
-
-const geradorDeCarta = (dificuldade: string) => {
-    let quantidadeCartas: number = selecionaDificuldade(dificuldade)
-
-    const cartas = []
-    for(let i = 0; i < quantidadeCartas;i++){
-        for( let j = 1; j<3;j++){
-            const carta = {id: 2 * i + j, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
-            cartas.push(carta);
-        }
-    }
-
-    return cartas;
-}
+import Seletor from "../../components/Seletor";
+import { Embaralhar } from "../../utils";
+import { MenuSecundario } from "../../components/MenuSecundario";
+import {  MAX_CARTAS_VIRADAS } from "../../constants/jogoDaMemoriaConstants";
 
 
 export const JogoMemoria = () => {
@@ -46,21 +15,7 @@ export const JogoMemoria = () => {
     const [jogoiniciado, setJogoIniciado] = useState(false);
     const [dificuldade, setDificuldade] = useState("");
     const [showMenu, setShowMenu] = useState(true);
-
-
-    const iniciarJogo = async () => {
-        if(dificuldade){
-            const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
-            setBaralho(deckEmbaralhado);
-            setJogoIniciado(true);
-            setShowMenu(false);
-        }
-       }
     
-    const handleShowMenuChange = (status : boolean) : void => {
-        setShowMenu(status)
-    }
-
     useEffect(() => {
         iniciarJogo()
     }, [dificuldade])
@@ -79,6 +34,20 @@ export const JogoMemoria = () => {
             fimDeJogo()
     }, [cartasAcertadas, baralho.length])
     
+
+    const iniciarJogo = async () => {
+        if(dificuldade){
+            const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
+            setBaralho(deckEmbaralhado);
+            setJogoIniciado(true);
+            setShowMenu(false);
+        }
+       }
+    
+    const handleShowMenuChange = (status : boolean) : void => {
+        setShowMenu(status)
+    }
+
 
     const fliparCarta =  async (id?: number, estado?: boolean) => {
         setBaralho(prevBaralho => prevBaralho.map(c => {
@@ -106,7 +75,7 @@ export const JogoMemoria = () => {
 
     const onCardClick = (id: number) : void => {
 
-        if (cartasViradas.includes(id) || cartasViradas.length === 2 || cartasAcertadas.includes(id)) {
+        if (cartasViradas.includes(id) || cartasViradas.length === MAX_CARTAS_VIRADAS || cartasAcertadas.includes(id)) {
             return;
         }
 
@@ -116,7 +85,7 @@ export const JogoMemoria = () => {
         setCartasViradas([...cartasViradas, id]);
 
 
-        if (newCartasViradas.length === 2) {
+        if (newCartasViradas.length === MAX_CARTAS_VIRADAS) {
             const [primeiraCarta, segundaCarta] = newCartasViradas;
             const primeiraCartaConteudo = encontrarCarta(primeiraCarta).conteudo
             const segundaCartaConteudo = encontrarCarta(segundaCarta).conteudo

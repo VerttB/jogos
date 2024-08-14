@@ -1,4 +1,4 @@
-import { JogoMemoria } from "../../components/JogoDaMemoria/JogoMemoria";
+import { JogoMemoria } from "../../pages/JogoMemoria";
 import { JogoDaVelha } from "../../components/JogoDaVelha/Jogo";
 
 interface CaminhoJogos {
