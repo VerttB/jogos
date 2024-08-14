@@ -1,11 +1,7 @@
 
-import { JogoMemoria } from './components/JogoDaMemoria/JogoMemoria'
-import { JogoDaVelha } from './components/JogoDaVelha/Jogo'
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
-import { MenuSecundario } from './components/MenuSecundario'
-import { useNavigate } from 'react-router-dom'
-import MenuPrincipal from './components/MenuPrincipal'
 import { jogosPath } from './constants/jogosPath/jogosPath'
+
 function App() {
   
   

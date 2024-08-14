@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext } from "react";
-import { Tabuleiro } from "../Tabuleiro"
-import "./jogoMemoria.scss"
+import { Tabuleiro } from "../Tabuleiro";
+import style from "./JogoMemoria.module.scss";
 import Seletor from "../../Seletor";
 import { Embaralhar } from "../../../utils";
 import { DificuldadeMemoria } from "../../../enums/Dificuldade-enum";
@@ -135,7 +135,7 @@ export const JogoMemoria = () => {
     }
     return (
        
-        <div className="jogo-inicio">
+        <div className={style.jogoInicio}>
             {
             showMenu 
             ? 

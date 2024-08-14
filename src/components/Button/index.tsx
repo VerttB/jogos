@@ -1,3 +1,5 @@
+import style from './Button.module.scss'
+
 type ButtonProps = {
     children? : String,
     onClick?: (event?:any) => void
@@ -5,7 +7,7 @@ type ButtonProps = {
 
 export default function Button({children, onClick} : ButtonProps){
     return(
-        <button className='button' onClick={onClick}> 
+        <button className={style.button} onClick={onClick}> 
             {children}
         </button>
     )

@@ -1,7 +1,6 @@
-import {  useState } from "react";
-import Button from "../../Button";
-import './TabuleiroJogoVelha.scss'
 
+
+import  style  from './TabuleiroJogoVelha.module.scss'
 export default function TabuleiroJogoVelha(){
 
    const jogar = (e : any ) => {
@@ -12,8 +11,8 @@ export default function TabuleiroJogoVelha(){
 
 
     return(
-        <div className='tabuleiroJogoVelha'>
-            {[...Array(9)].map((_, i) => <div className="area" key={i} onClick={jogar}></div>)}
+        <div className={style.TabuleiroJogoVelha}>
+            {[...Array(9)].map((_, i) => <div className={style.area} key={i} onClick={jogar}></div>)}
         </div>
     )
 }

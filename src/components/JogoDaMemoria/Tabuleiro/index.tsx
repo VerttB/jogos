@@ -1,5 +1,5 @@
 import { Card } from "../Card";
-import "./tabuleiro.scss"
+import style from "./tabuleiro.module.scss"
 import React from "react";
 
 type CartaDados = {
@@ -21,7 +21,7 @@ export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) =>
     const tamanhoCartas = {"--tamanho" : 100 /baralho.length * tamanhoMultiplicador} as React.CSSProperties
 
     return(
-        <div className="tabuleiro" style={tamanhoCartas}>
+        <div className={style.tabuleiro} style={tamanhoCartas}>
             {baralho.map(b => 
                 <Card key={b.id}
                 id={b.id}

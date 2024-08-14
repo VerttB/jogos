@@ -1,5 +1,5 @@
 import Button from "../Button";
-import './MenuSecundario.scss';
+import style from './MenuSecundario.module.scss';
 import { useNavigate} from "react-router-dom";
 interface MenuSecundarioProps {
     fecharMenu : (status : boolean) => void;
@@ -13,8 +13,8 @@ export const MenuSecundario: React.FC<MenuSecundarioProps> = ({ fecharMenu, regr
     }
 
     return(
-        <div className="menuSecundario">
-            <h3 className="titulo">Menu</h3>
+        <div className={style.menuSecundario}>
+            <h3 className={style.titulo}>Menu</h3>
             <Button onClick={() => fecharMenu(false)}>Jogar</Button>
             <Button>{regras}</Button>
             <Button onClick={menuPrincipal}>Menu Principal</Button> 

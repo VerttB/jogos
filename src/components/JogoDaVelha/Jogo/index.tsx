@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../../Button';
 import TabuleiroJogoVelha from '../TabuleiroJogoVelha';
-import './JogoDaVelha.scss';
+import  style  from './JogoDaVelha.module.scss'
 import { MenuSecundario } from '../../MenuSecundario';
 
 interface BlocoArea{
@@ -25,7 +25,7 @@ export const JogoDaVelha = () =>{
     }
 
     return(
-        <div className="jogoDaVelha">
+        <div className={style.JogoDaVelha}>
             {showMenu ?
             <MenuSecundario fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
             :
