@@ -46,7 +46,6 @@
     .conteudoFrente{
         background-color: #E7D37F ;
         color: black;
-        transform: rotateY(180deg);
         border: 2px solid #F5EDED;
         p {
             font-size: calc(var(--tamanho) * fun.toRem(16));
@@ -62,7 +61,8 @@
         border: 2px solid #F5EDED;
         
         p{
-            font-size: calc(var(--tamanho) * fun.toRem(16));            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
+            font-size: calc(var(--tamanho) * fun.toRem(16));
+            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
