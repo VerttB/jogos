@@ -1,18 +1,17 @@
-@use '../../assets/scss/functions.scss' as fun;
-@use '../../assets/scss/fonts.scss' as f;
+
 .dificuldade{
     cursor:pointer;
     display: flex;
-    width: fun.toRem(512);
+    width: g.toRem(512);
     background-color: #03346E;
     border-radius: 8px;
-    height: fun.toRem(48);
+    height: g.toRem(48);
     align-items: center;
     justify-content: center;
-    margin: fun.toRem(4) 0;
+    margin: g.toRem(4) 0;
     color: white;
-    font: f.$Poppins;
-    font-size: fun.toRem(32);
+    font: g.$Poppins;
+    font-size: g.toRem(32);
 }
 
 .dificuldade:hover{

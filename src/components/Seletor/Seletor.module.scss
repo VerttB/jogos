@@ -1,13 +1,13 @@
-@use '../../assets/scss/functions.scss' as fun;
+
 .seletor{
     display: flex;
     flex-direction: column;
-    gap: fun.toRem(4);
+    gap: g.toRem(4);
     text-align: center;
     align-items: center;
 
     .titulo{
         color: white;
-        font-size: fun.toRem(64);
+        font-size: g.toRem(64);
     }
 }

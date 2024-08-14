@@ -1,9 +1,8 @@
-@use '../../assets/scss/variables.scss' as v;
 
 .menuPrincipal {
     display: flex;
     flex-direction: column;
-    background-color: v.$bg-dark;
+    background-color: g.$bg-dark;
     width: 100vw;
     height: 100vh;
     color: white;

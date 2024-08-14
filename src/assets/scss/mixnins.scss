@@ -4,3 +4,15 @@
     color: $color;
     font-family: $font-family;
 }
+
+@mixin text-clip($color, $sec-color: ""){
+    @if( $sec-color == ""){
+        background: $color;
+    }
+    @else{
+        background: -webkit-linear-gradient($color, $sec-color);
+    }
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

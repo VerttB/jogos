@@ -1,19 +1,18 @@
-@use '../../assets/scss/functions.scss' as fun;
-@use '../../assets/scss/fonts.scss' as f;
+
 @use 'sass:color';
 
 .menuSecundario{
     display: flex;
     flex-direction: column;
-    gap: fun.toRem(16);
+    gap: g.toRem(16);
     background-color: #021526;
     text-align: center;
     
 
     .titulo{
-        font-size: fun.toRem(48);
+        font-size: g.toRem(48);
         color: white;
-        font-family: f.$Poppins;
+        font-family: g.$Poppins;
         font-weight: 300;
     }
 

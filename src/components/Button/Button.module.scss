@@ -1,13 +1,13 @@
-@use '../../assets/scss/functions.scss' as fun;
-@use '../../assets/scss/fonts.scss' as f;
+
+//@use '../../assets/scss/global.scss' as g;
 @use 'sass:color';
 .button{
     padding: 4px 32px;
-    font-size: fun.toRem(48);
+    font-size: g.toRem(48);
     cursor: pointer;
     background-color: #D4BDAC;
     border: none;
-    font-family: f.$Poppins;
+    font-family: g.$Poppins;
     border-radius: 8px;
     &:hover{
        background-color: color.scale(#D4BDAC,$lightness: 50%);

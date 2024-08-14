@@ -1,7 +1,4 @@
-@use '../../../assets/scss/functions.scss' as fun;
-@use '../../../assets/scss/fonts.scss' as font;
 @use '../../../assets/scss/images.scss' as image;
-
 
 .carta{
     
@@ -48,9 +45,12 @@
         color: black;
         border: 2px solid #F5EDED;
         p {
-            font-size: calc(var(--tamanho) * fun.toRem(16));
-            font-family: font.$Calistoga;
+            font-size: calc(var(--tamanho) * g.toRem(16));
+            font-family: g.$Calistoga;
             font-weight: 500;
+            border: 4px solid rgb(83, 81, 81);
+            padding:24px;
+
     
         }
     }
@@ -61,12 +61,9 @@
         border: 2px solid #F5EDED;
         
         p{
-            font-size: calc(var(--tamanho) * fun.toRem(16));
-            background: -webkit-linear-gradient(#bbe44a, #f5fdfd);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: font.$Calistoga;
+            font-size: calc(var(--tamanho) * g.toRem(16));
+            @include g.text-clip(#bbe44a ,#f5fdfd );
+            font-family: g.$Calistoga;
             font-weight: bold;
         }
     }

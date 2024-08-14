@@ -1,23 +1,20 @@
-@use '../../assets/scss/variables.scss' as v;
-@use '../../assets/scss/fonts.scss' as f;
-@use '../../assets/scss/functions.scss' as fun;
-@use '../../assets/scss/mixnins.scss' as m;
+
 
 .errorPage{
     height: 100vh;
     width: 100%;
-    background-color: v.$bg-dark;
+    background-color: g.$bg-dark;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
     .titulo{
-        @include m.text-format(fun.toRem(64), white, f.$Poppins);
+        @include g.text-format(g.toRem(64), white, g.$Poppins);
     }
 
     .paragrafo{
-        @include m.text-format(fun.toRem(32), white, f.$Poppins);
+        @include g.text-format(g.toRem(32), white, g.$Poppins);
     }
 
 }
