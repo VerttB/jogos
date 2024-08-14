@@ -1,18 +1,21 @@
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import  style  from './TabuleiroJogoVelha.module.scss'
-export default function TabuleiroJogoVelha(){
+import { useState } from 'react';
+interface tabuleiroProps{
+    
+    areaClicada: string[]
+    jogar : (id   : number) => void;
+}
+export default function TabuleiroJogoVelha({areaClicada, jogar } : tabuleiroProps){
+   
 
-   const jogar = (e : any ) => {
-     e.target.style.backgroundImage = 'X'
-     console.log(e.target.style)
-   }
+    const divs = ([...Array(9)].map((_, i) => <div className={style.area} key={i} onClick={() => jogar(i)}>{areaClicada[i]}</div>))
 
-
-
+   
     return(
-        <div className={style.TabuleiroJogoVelha}>
-            {[...Array(9)].map((_, i) => <div className={style.area} key={i} onClick={jogar}></div>)}
+        <div className={style.tabuleiroJogoVelha}>
+            {divs.map(d => d)}
         </div>
     )
 }

@@ -16,38 +16,39 @@ export const JogoMemoria = () => {
     const [dificuldade, setDificuldade] = useState("");
     const [showMenu, setShowMenu] = useState(true);
     
+   
     useEffect(() => {
         iniciarJogo()
-    }, [dificuldade])
-
+    }, [dificuldade]);
 
     useEffect(() => {
-        const fimDeJogo = () : void => {
-            if (cartasAcertadas.length === baralho.length && jogoiniciado) {
-                console.log("Você ganhou!!!!");
-                setTimeout(() => {
-                    resetarJogo()
-                }, 1000)
-            }
-        };
-
-            fimDeJogo()
-    }, [cartasAcertadas, baralho.length])
+        fimDeJogo()
+    }, [cartasAcertadas]);
     
 
     const iniciarJogo = async () => {
         if(dificuldade){
-            const deckEmbaralhado = await Embaralhar(geradorDeCarta(dificuldade));
-            setBaralho(deckEmbaralhado);
+
+            setBaralho(await Embaralhar(geradorDeCarta(dificuldade)));
             setJogoIniciado(true);
             setShowMenu(false);
         }
+
+
        }
+
+    const fimDeJogo = () : void => {
+        if (cartasAcertadas.length === baralho.length && jogoiniciado) {
+            console.log("Você ganhou!!!!");
+            setTimeout(() => {
+                resetarJogo()
+            }, 1000)
+        }
+    };
     
     const handleShowMenuChange = (status : boolean) : void => {
         setShowMenu(status)
     }
-
 
     const fliparCarta =  async (id?: number, estado?: boolean) => {
         setBaralho(prevBaralho => prevBaralho.map(c => {
@@ -67,8 +68,6 @@ export const JogoMemoria = () => {
         setDificuldade("");
     }
 
-  
-
     const encontrarCarta = (cartaId : number) => {
         return baralho.find(c => c.id === cartaId)
     }
@@ -87,23 +86,21 @@ export const JogoMemoria = () => {
 
         if (newCartasViradas.length === MAX_CARTAS_VIRADAS) {
             const [primeiraCarta, segundaCarta] = newCartasViradas;
-            const primeiraCartaConteudo = encontrarCarta(primeiraCarta).conteudo
-            const segundaCartaConteudo = encontrarCarta(segundaCarta).conteudo
+            const [ primeiraCartaConteudo, segundaCartaConteudo] = [encontrarCarta(primeiraCarta).conteudo, encontrarCarta(segundaCarta).conteudo]
 
             if (primeiraCartaConteudo === segundaCartaConteudo) {
                 setCartasAcertadas(() => [...cartasAcertadas, primeiraCarta, segundaCarta]);
             
+        }else{
+            setTimeout(() => fliparCarta(undefined, false), 1000);
         }
-            else {
-                setTimeout(() => fliparCarta(undefined, false), 1000)
-            }
-
+            
             setTimeout(() => setCartasViradas([]), 1000);
         }
 
     }
     return (
-       
+    
         <div className={style.jogoInicio}>
             {
             showMenu 
