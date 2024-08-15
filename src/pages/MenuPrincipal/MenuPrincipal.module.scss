@@ -6,9 +6,20 @@
     width: 100vw;
     height: 100vh;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .jogos{
+        margin-top: g.toRem(64);
+        height: 50%;
+        width: 50%;
         display: flex;
-        gap: 12px;
+        gap: g.toRem(64);
+
+        .link{
+            text-decoration: none;
+            color: white;
+        }
     }
 }

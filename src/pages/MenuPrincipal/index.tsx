@@ -10,7 +10,7 @@ export default function MenuPrincipal(){
             <h3>Escolha o jogo que deseja jogar</h3>
             <div className={style.jogos}>
             {jogosPath.map(jp => 
-                <Link key={jp.nome} to={jp.caminho}>
+                <Link className={style.link} key={jp.nome} to={jp.caminho}>
                     <Icone imagem={imagemStartPath + jp.nome.replace(/\s/g,'') + '.jpg'} titulo={jp.nome}>
                     </Icone>
                 </Link>

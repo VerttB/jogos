@@ -1,12 +1,16 @@
 .icone{
-    height: g.toRem(32);
-    width: g.toRem(64);
+    height: g.toRem(92);
+    width: g.toRem(92);
+    text-align: center;
     .imagem{
-        width: 100%;
+        border-radius: 50%;
         height: 100%;
+        width: 100%;
+        border: 2px solid white;
     }
 
     .paragrafo{
         font-size: g.toRem(16);
+        font-family: g.$Calistoga;
     }
 }
