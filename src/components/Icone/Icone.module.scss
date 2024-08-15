@@ -1,7 +1,11 @@
+@use 'sass:color';
+
 .icone{
     height: g.toRem(92);
     width: g.toRem(92);
     text-align: center;
+
+    
     .imagem{
         border-radius: 50%;
         height: 100%;
@@ -9,8 +13,21 @@
         border: 2px solid white;
     }
 
+    &:hover > .imagem {
+        transform:scale(1.1);
+    }
+
     .paragrafo{
+        color: g.$text-color;
         font-size: g.toRem(16);
+        
         font-family: g.$Calistoga;
+    }
+
+    &:hover > .paragrafo {
+        
+        text-decoration:underline;
+
+        color: color.scale(white, $lightness: 80%);
     }
 }

@@ -1,15 +1,18 @@
 
 //@use '../../assets/scss/global.scss' as g;
 @use 'sass:color';
+
 .button{
     padding: 4px 32px;
     font-size: g.toRem(48);
+    width: g.toRem(512);
     cursor: pointer;
-    background-color: #D4BDAC;
+    background-color: #468585;
     border: none;
     font-family: g.$Poppins;
     border-radius: 8px;
+    color: g.$text-color;
     &:hover{
-       background-color: color.scale(#D4BDAC,$lightness: 50%);
+       background-color: color.scale(#468585,$lightness: 10%);
     }
 }

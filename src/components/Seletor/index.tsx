@@ -1,4 +1,4 @@
-import Dificuldade from "../Dificuldade";
+import Button from "../Button";
 import style from  './Seletor.module.scss'
 
 interface SeletorProps{
@@ -8,9 +8,15 @@ export default function Seletor({setDificuldade}:SeletorProps){
     return(
         <div className={style.seletor}>
             <h3 className={style.titulo}>Escolha a Dificuldade</h3>
-            <Dificuldade setDificuldade={setDificuldade} dificuldade="facil"></Dificuldade>
-            <Dificuldade setDificuldade={setDificuldade} dificuldade="medio"></Dificuldade>
-            <Dificuldade setDificuldade={setDificuldade} dificuldade="dificil"></Dificuldade>
+            <Button onClick={() => setDificuldade('FACIL') }>
+                FÁCIL
+            </Button>
+            <Button onClick={() => setDificuldade('MEDIO') }>
+                MÉDIO
+            </Button>
+            <Button onClick={() => setDificuldade('DIFICIL') }>
+                DIFICIL
+            </Button>
         </div>
     )
 }
