@@ -1,0 +1,12 @@
+.icone{
+    height: g.toRem(32);
+    width: g.toRem(64);
+    .imagem{
+        width: 100%;
+        height: 100%;
+    }
+
+    .paragrafo{
+        font-size: g.toRem(16);
+    }
+}
