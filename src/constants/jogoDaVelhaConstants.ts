@@ -10,7 +10,6 @@ export const VICTORY_CONDITIONS = [
     [2, 4, 6],
 ]
 
-
 export const DRAW = 'DRAW';
 export const CONTINUE = 'CONTINUE'
 export const EMPTY = '';

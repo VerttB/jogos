@@ -1,5 +1,5 @@
-import { JogoMemoria } from "../../pages/JogoMemoria";
-import { JogoDaVelha } from "../../components/JogoDaVelha/Jogo";
+import { JogoMemoria } from "../pages/JogoMemoria";
+import { JogoDaVelha } from "../pages/JogoDaVelha";
 
 interface CaminhoJogos {
     caminho : string,

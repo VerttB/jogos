@@ -1,6 +1,6 @@
 
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
-import { jogosPath } from './constants/jogosPath/jogosPath'
+import { jogosPath } from './constants/jogosPath'
 import MenuPrincipal from './pages/MenuPrincipal'
 import { ErrorPage } from './pages/ErrorPage'
 

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import { jogosPath } from "../../constants/jogosPath/jogosPath"
+import { jogosPath } from "../../constants/jogosPath"
 import  style from './MenuPrincipal.module.scss'
 import { Icone } from "../../components/Icone/Icone"
 
 export default function MenuPrincipal(){
-    const imagemStartPath = 'src/assets/';
+    const imagemStartPath = 'src/assets/game_icons/';
     return(
         <div className={style.menuPrincipal}>
             <h3>Escolha o jogo que deseja jogar</h3>
