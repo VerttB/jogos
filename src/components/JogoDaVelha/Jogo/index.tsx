@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import TabuleiroJogoVelha from '../TabuleiroJogoVelha';
 import style from './JogoDaVelha.module.scss'
 import { MenuSecundario } from '../../MenuSecundario';
-import { possiveisVitorias } from '../../../constants/jogoDaVelhaConstants';
+import { VICTORY_CONDITIONS, DRAW, CONTINUE, EMPTY } from '../../../constants/jogoDaVelhaConstants';
 
 
 export const JogoDaVelha = () => {
@@ -13,7 +13,7 @@ export const JogoDaVelha = () => {
 
     const jogar = (id: number) => {
 
-        if (jogoFinalizado || areaClicada[id] !== '') {
+        if (jogoFinalizado || areaClicada[id] !== EMPTY) {
             return;
         }
         const novasJogadas = [...areaClicada];
@@ -22,7 +22,7 @@ export const JogoDaVelha = () => {
 
         const resultado = verificaVitoria(novasJogadas);
         finalizarJogo(resultado);
-        if (resultado === 'n') {
+        if (resultado === CONTINUE) {
             setTimeout(() => jogadaAuto(novasJogadas), 100);
         }
 
@@ -45,26 +45,27 @@ export const JogoDaVelha = () => {
 
     }
     const verificaVitoria = (novasJogadas: string[]): string => {
-        for (let i = 0; i < possiveisVitorias.length; i++) {
-            const [a, b, c] = possiveisVitorias[i];
+
+        for (let i = 0; i < VICTORY_CONDITIONS.length; i++) {
+            const [a, b, c] = VICTORY_CONDITIONS[i];
             if (novasJogadas[a] && novasJogadas[a] === novasJogadas[b] && novasJogadas[a] === novasJogadas[c]) {
                 return novasJogadas[a];
             }
         }
-        const areasRestantes = novasJogadas.some(ac => ac === '');
+        const areasRestantes = novasJogadas.some(ac => ac === EMPTY);
         if (!areasRestantes) {
-            return 'e';
+            return DRAW;
         }
-        return 'n';
+        return CONTINUE;
     };
 
     const finalizarJogo = (elemento: string) => {
-        if (elemento && elemento !== 'n') {
+        if (elemento && elemento !== CONTINUE) {
             console.log("O " + elemento + " venceu o jogo");
             setJogoFinalizado(true);
             setTimeout(resetarJogo, 1500);
         }
-        else if (elemento && elemento === 'e') {
+        else if (elemento && elemento === DRAW) {
             console.log("Empate!!");
             setJogoFinalizado(true);
             setTimeout(resetarJogo, 1500);

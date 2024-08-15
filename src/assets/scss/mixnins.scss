@@ -1,8 +1,9 @@
 
-@mixin text-format($font-size , $color, $font-family){
+@mixin text-format($font-size , $color, $font-family : g.$Poppins, $font-weight: normal){
     font-size: $font-size;
     color: $color;
     font-family: $font-family;
+    font-weight: $font-weight;
 }
 
 @mixin text-clip($color, $sec-color: ""){
