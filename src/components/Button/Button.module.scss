@@ -5,7 +5,7 @@
 .button{
     padding: 4px 32px;
     font-size: g.toRem(48);
-    width: g.toRem(512);
+    @include g.size($w: g.toRem(512));
     cursor: pointer;
     background-color: #468585;
     border: none;

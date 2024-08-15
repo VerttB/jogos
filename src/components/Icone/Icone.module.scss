@@ -1,15 +1,13 @@
 @use 'sass:color';
 
 .icone{
-    height: g.toRem(92);
-    width: g.toRem(92);
+    @include g.size(g.toRem(92), g.toRem(92));
     text-align: center;
 
     
     .imagem{
         border-radius: 50%;
-        height: 100%;
-        width: 100%;
+        @include g.size(100%,100%);
         border: 2px solid white;
     }
 

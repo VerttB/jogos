@@ -2,9 +2,7 @@
 
 .carta{
     
-    height: calc(var(--tamanho) * 2rem);
-    width: calc(var(--tamanho) * 1.5rem);
-    
+    @include g.size(calc(var(--tamanho) * 2rem),calc(var(--tamanho) * 1.5rem) );
     display: flex;
     align-items: center;
     justify-content: center;

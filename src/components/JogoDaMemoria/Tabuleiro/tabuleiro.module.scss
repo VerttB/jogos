@@ -2,8 +2,7 @@
 .tabuleiro{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    height: 100%;
+    @include g.size(100%, 80%);
     justify-content: center;
     align-content: center;
     gap: 1.25rem;

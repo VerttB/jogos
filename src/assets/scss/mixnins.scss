@@ -16,3 +16,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@mixin size($h: auto , $w : auto){
+    height: $h;
+    width: $w;
+}
