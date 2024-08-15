@@ -1,83 +1,94 @@
 import { useEffect, useState } from 'react';
 import TabuleiroJogoVelha from '../TabuleiroJogoVelha';
-import  style  from './JogoDaVelha.module.scss'
+import style from './JogoDaVelha.module.scss'
 import { MenuSecundario } from '../../MenuSecundario';
 import { possiveisVitorias } from '../../../constants/jogoDaVelhaConstants';
 
 
-export const JogoDaVelha = () =>{
-    const [player, setPlayer] = useState(1);
+export const JogoDaVelha = () => {
     const [showMenu, setShowMenu] = useState(true);
     const [simbolo, setSimbolo] = useState('X')
     const [areaClicada, setAreaClicada] = useState<string[]>(new Array(9).fill(''));
+    const [jogoFinalizado, setJogoFinalizado] = useState(false);
 
-    const jogar = (id : number) =>{
-        const novasJogadas = [...areaClicada];
-        console.log(novasJogadas)
-            if(novasJogadas[id] === ''){
-                novasJogadas[id] = simbolo;
-                setAreaClicada(novasJogadas);
-                setSimbolo(prev => 'O');
-                setTimeout(jogadaAuto, 100);
-            
-        } 
-     }
+    const jogar = (id: number) => {
 
-    const jogadaAuto = () => {
-        let pos = Math.floor(Math.random() * 9 + 1)
-
-        const areas = [...areaClicada]
-        while(areas[pos] !== ''){
-            pos = Math.floor(Math.random() * 9 + 1);
+        if (jogoFinalizado || areaClicada[id] !== '') {
+            return;
         }
-        console.log(pos);
-        areas[pos] = simbolo;
-        setAreaClicada(areas)
-        setSimbolo('X');
+        const novasJogadas = [...areaClicada];
+        novasJogadas[id] = simbolo;
+        setAreaClicada([...novasJogadas]);
+
+        const resultado = verificaVitoria(novasJogadas);
+        finalizarJogo(resultado);
+        if (resultado === 'n') {
+            setTimeout(() => jogadaAuto(novasJogadas), 100);
+        }
 
     }
-    const verificaVitoria = ():string => {
-       for(let i = 0; i < possiveisVitorias.length;i++){
-        const [a,b,c] = possiveisVitorias[i];
-            if( areaClicada[a] && areaClicada[a] === areaClicada[b] && areaClicada[a] === areaClicada[c]){
-                console.log(a , b , c)
-                return areaClicada[a]
+
+    const jogadaAuto = (novasJogadas: string[]) => {
+        if (jogoFinalizado) return;
+        let pos = Math.floor(Math.random() * 9)
+
+        while (novasJogadas[pos] !== '') {
+            pos = Math.floor(Math.random() * 9);
+        }
+        console.log("Ia jogou")
+
+        novasJogadas[pos] = 'O';
+        setAreaClicada([...novasJogadas]);
+
+        const resultado = verificaVitoria(novasJogadas);
+        finalizarJogo(resultado);
+
+    }
+    const verificaVitoria = (novasJogadas: string[]): string => {
+        for (let i = 0; i < possiveisVitorias.length; i++) {
+            const [a, b, c] = possiveisVitorias[i];
+            if (novasJogadas[a] && novasJogadas[a] === novasJogadas[b] && novasJogadas[a] === novasJogadas[c]) {
+                return novasJogadas[a];
             }
         }
-        return 'n'
-    }
-    const finalizarJogo = (elemento : string) => {
-        if(elemento && elemento !== 'n'){
+        const areasRestantes = novasJogadas.some(ac => ac === '');
+        if (!areasRestantes) {
+            return 'e';
+        }
+        return 'n';
+    };
+
+    const finalizarJogo = (elemento: string) => {
+        if (elemento && elemento !== 'n') {
             console.log("O " + elemento + " venceu o jogo");
-            resetarJogo();
+            setJogoFinalizado(true);
+            setTimeout(resetarJogo, 1500);
+        }
+        else if (elemento && elemento === 'e') {
+            console.log("Empate!!");
+            setJogoFinalizado(true);
+            setTimeout(resetarJogo, 1500);
         }
     }
 
     const resetarJogo = () => {
         setAreaClicada(new Array(9).fill(''));
+        setJogoFinalizado(false);
         setSimbolo('X')
     }
-    
-    const handleShowMenuChange = (status : boolean) : void => {
+
+    const handleShowMenuChange = (status: boolean): void => {
         setShowMenu(status)
     }
-    
-    useEffect(() => {
-        finalizarJogo(verificaVitoria());
-        
-    },[areaClicada])
 
-    useEffect(() => {
-        
-    }, [jogar])
-    return(
+    return (
         <div className={style.jogoDaVelha}>
-           {
-            showMenu 
-            ? 
-            <MenuSecundario fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
-            :
-           <TabuleiroJogoVelha areaClicada={areaClicada} jogar={jogar}></TabuleiroJogoVelha>
+            {
+                showMenu
+                    ?
+                    <MenuSecundario fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
+                    :
+                    <TabuleiroJogoVelha areaClicada={areaClicada} jogar={jogar}></TabuleiroJogoVelha>
             }
         </div>
     )
