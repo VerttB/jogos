@@ -86,7 +86,7 @@ export const JogoDaVelha = () => {
             {
                 showMenu
                     ?
-                    <MenuSecundario fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
+                    <MenuSecundario jogo="Jogo da Velha" fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
                     :
                     <TabuleiroJogoVelha areaClicada={areaClicada} jogar={jogar}></TabuleiroJogoVelha>
             }

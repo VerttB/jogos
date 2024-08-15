@@ -105,7 +105,7 @@ export const JogoMemoria = () => {
             {
             showMenu 
             ? 
-            <MenuSecundario fecharMenu={handleShowMenuChange} regras={""}/> 
+            <MenuSecundario jogo="Jogo da Memória" fecharMenu={handleShowMenuChange} regras={""}/> 
             :
             dificuldade === "" ?
             <Seletor setDificuldade={setDificuldade}></Seletor> 
