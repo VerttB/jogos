@@ -1,10 +1,13 @@
 import { useState } from "react"
 import style from './BlocoSecundario.module.scss';
-export const BlocoSecundario = () =>{
+interface BlocoSecundarioProps{
+    valor:number,
+}
+export const BlocoSecundario = ({valor}:BlocoSecundarioProps) =>{
    
     return(
         <div className={style.blocoSecundario}>
-            2
+            {valor}
         </div>
     )
 }
