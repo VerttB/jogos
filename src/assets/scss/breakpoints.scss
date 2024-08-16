@@ -1,0 +1,40 @@
+@use './functions.scss' as f;
+$breakpoints: (
+    mobile:(
+        min: f.toRem(320),
+        max: f.toRem(480),
+    ),
+    tablet:(
+        min:f.toRem(481),
+        max:f.toRem(768),
+    ),
+    laptop:(
+        min:f.toRem(767),
+        max: f.toRem(1024),
+    ),
+    desktop:(
+        min:f.toRem(1025),
+        max: f.toRem(1280),
+    ),
+    xl:(
+        min:f.toRem(1281),
+    )
+);
+
+@mixin breakpoint($breakpoint){
+    $br: map-get($breakpoints, $breakpoint);
+    @debug map-get($br, min );
+    @debug map-get($br, max );
+    @if map-has-key($br, 'min' ) and map-has-key($br , 'max'){
+        $br-min: map-get($br, min );
+        $br-max: map-get($br, max);
+        @media(min-width: $br-min) and (max-width: $br-max){
+            @content;
+        }
+    }
+    @else if  map-has-key($br, min ) {
+        @media(min-width: map-get($br, min)){
+            @content;
+        }
+    }
+}

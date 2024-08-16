@@ -7,12 +7,12 @@
     gap: g.toRem(16);
     background-color: #021526;
     text-align: center;
-    
+    align-items: center;
     .titulo{
-        font-size: g.toRem(48);
-        color: white;
-        font-family: g.$Poppins;
-        font-weight: 300;
+        @include g.text-format(g.toRem(48), g.$text-color,g.$Poppins, 300 );
+        @include g.breakpoint(mobile){
+           font-size: g.toRem(32);
+        }
     }
 
 }

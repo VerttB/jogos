@@ -22,3 +22,9 @@
     height: $h;
     width: $w;
 }
+
+@mixin flex-all-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
