@@ -1,0 +1,12 @@
+@use 'sass:color';
+
+.blocoSecundario{
+    @include g.size(50px,50px);
+    @include g.flex-all-center;
+    background-color: white;
+    border: 1px solid black;
+    
+    &:hover{
+        background-color: color.scale(white, $lightness: -20%);
+    }
+}

@@ -1,0 +1,6 @@
+.jogoDaForca{
+    @include g.size(100vh, 100%);
+    background-color: g.$bg-dark;
+    color: g.$text-color;
+    
+}

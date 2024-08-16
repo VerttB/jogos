@@ -10,7 +10,7 @@ export const Icone : React.FC<IconeProps> = ({imagem, titulo}) => {
 
     return(
         <div className={style.icone}>
-            <img className={style.imagem} src={imagem} alt={imagem} />
+            <img className={style.imagem} src={imagem} alt={``} />
             <p className={style.paragrafo}>
                 {titulo}
             </p>
