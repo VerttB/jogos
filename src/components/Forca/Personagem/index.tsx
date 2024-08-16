@@ -2,6 +2,8 @@ export const Personagem = () => {
 
     return(
 
-        <div>Oi</div>
+        <div>Oi
+
+        </div>
     )
 }

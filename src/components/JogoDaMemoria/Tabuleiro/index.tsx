@@ -6,15 +6,17 @@ type CartaDados = {
     id: number
     conteudo: string,
     cartaVirada: boolean,
+    
 }
 
 type TabuleiroProps = {
     baralho: CartaDados[],
     onCardClick: (id:number) => void;
+  
 }
 
 export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) => {
-    const tamanhoMultiplicador = (baralho.length <= 16 ? 1 
+    const tamanhoMultiplicador = (baralho.length <= 16 ? 0.3 
                                   :baralho.length <= 32 ? 2 : 2.6);
 
                                   
@@ -22,6 +24,7 @@ export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) =>
 
     return(
         <div className={style.tabuleiro} style={tamanhoCartas}>
+            
             {baralho.map(b => 
                 <Card key={b.id}
                 id={b.id}

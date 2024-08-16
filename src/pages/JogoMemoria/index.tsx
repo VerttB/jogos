@@ -6,6 +6,7 @@ import Seletor from "../../components/Seletor";
 import { Embaralhar } from "../../utils";
 import { MenuSecundario } from "../../components/MenuSecundario";
 import {  MAX_CARTAS_VIRADAS } from "../../constants/jogoDaMemoriaConstants";
+import { Dialog } from "../../components/Dialog/Dialog";
 
 
 export const JogoMemoria = () => {
@@ -15,6 +16,7 @@ export const JogoMemoria = () => {
     const [jogoiniciado, setJogoIniciado] = useState(false);
     const [dificuldade, setDificuldade] = useState("");
     const [showMenu, setShowMenu] = useState(true);
+    const [showDialog, setShowDialog] = useState(false);
     
    
     useEffect(() => {
@@ -28,29 +30,31 @@ export const JogoMemoria = () => {
 
     const iniciarJogo = async () => {
         if(dificuldade){
-
+            console.log('iuniciando')
             setBaralho(await Embaralhar(geradorDeCarta(dificuldade)));
+            setCartasAcertadas([]);
+            setCartasViradas([]);
             setJogoIniciado(true);
-            setShowMenu(false);
+            setShowMenu(false); 
+            setShowDialog(false);
         }
-
-
-       }
+    }
 
     const fimDeJogo = () : void => {
         if (cartasAcertadas.length === baralho.length && jogoiniciado) {
-            console.log("Você ganhou!!!!");
-            setTimeout(() => {
-                resetarJogo()
-            }, 1000)
+            setJogoIniciado(false)
+            setShowDialog(true)
         }
     };
     
-    const handleShowMenuChange = (status : boolean) : void => {
-        setShowMenu(status)
+    const handleShowMenu = (status : boolean) : void => {
+        setShowMenu(status);
+        setShowDialog(false);
+        setDificuldade("");
+
     }
 
-    const fliparCarta =  async (id?: number, estado?: boolean) => {
+    const fliparCarta =  (id?: number, estado?: boolean) => {
         setBaralho(prevBaralho => prevBaralho.map(c => {
             if (cartasAcertadas.includes(c.id)) return c
             if (id !== undefined) return c.id === id ? { ...c, cartaVirada: !c.cartaVirada } : c
@@ -60,12 +64,11 @@ export const JogoMemoria = () => {
         ));
     }
 
-    const resetarJogo = async ()  => {
-        setShowMenu(true);
-        await fliparCarta(undefined, false);
-        setCartasAcertadas([]);
-        setCartasViradas([]);
-        setDificuldade("");
+    const resetarJogo =  ()  => {
+        fliparCarta(undefined, false);
+        
+        iniciarJogo();
+        console.log("resetando jogo");
     }
 
     const encontrarCarta = (cartaId : number) => {
@@ -105,12 +108,23 @@ export const JogoMemoria = () => {
             {
             showMenu 
             ? 
-            <MenuSecundario jogo="Jogo da Memória" fecharMenu={handleShowMenuChange} regras={""}/> 
+            <MenuSecundario jogo="Jogo da Memória" fecharMenu={handleShowMenu} regras={""}/> 
             :
             dificuldade === "" ?
             <Seletor setDificuldade={setDificuldade}></Seletor> 
-            :
-            <Tabuleiro onCardClick={onCardClick} baralho={baralho}></Tabuleiro>
+            :<>
+            <Tabuleiro onCardClick={onCardClick} baralho={baralho}>
+            </Tabuleiro>
+            <Dialog
+            win={true}
+            clickPlayAgain={() => resetarJogo()}
+            clickBackToMenu={() => handleShowMenu(true)}
+            open={showDialog}
+            >
+            </Dialog>
+        </>
+            
+           
         }
        
         </div>
