@@ -6,17 +6,24 @@
     flex-direction: column;
     background-color: g.$bg-dark;
     color: white;
-
+    .titulo{
+        margin-top: 5%;
+        font-size: g.toRem(32);
+        text-align: center
+    }
     .jogos{
         @include g.size(50%,50%);
-        border: 1px solid white;
+      
         padding: g.toRem(32);
         margin-top: g.toRem(64);
         display: flex;
         gap: g.toRem(64);
+        flex-wrap: wrap;
+        align-content: flex-start;
+        overflow: auto;
 
         @include g.breakpoint(mobile){
-            @include g.size(80% ,100%);
+            @include g.size(80% ,90%);
         }
         .link{
             text-decoration: none;

@@ -8,7 +8,7 @@ export default function MenuPrincipal(){
     const imagemStartPath = `assets/game_icons/`;
     return(
         <div className={style.menuPrincipal}>
-            <h3>Escolha o jogo que deseja jogar</h3>
+            <h3 className={style.titulo}>Escolha o jogo que deseja jogar</h3>
             <div className={style.jogos}>
             {jogosPath.map(jp => 
                 <Link className={style.link} key={jp.nome} to={jp.caminho}>

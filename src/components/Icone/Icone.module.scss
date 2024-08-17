@@ -3,7 +3,7 @@
 .icone{
     @include g.size(g.toRem(92), g.toRem(92));
     text-align: center;
-
+    margin-left: 25%;
     
     .imagem{
         border-radius: 50%;
