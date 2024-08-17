@@ -6,14 +6,16 @@ interface DialogProps{
     win: boolean,
     clickPlayAgain: () => void,
     clickBackToMenu: () => void,
-    open : boolean
+    open : boolean,
+    mensagem: string,
 
 }
 
-export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open} : DialogProps) => {
+export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open, mensagem} : DialogProps) => {
     const vitoria = 'Parabéns, você venceu!!';
     const derrota = 'Que pena, você perdeu';
-    const mensagem = win ? vitoria : derrota;
+    let m = win ? vitoria : derrota;
+    if(mensagem !== "") m = mensagem
     const dialogRef = useRef<HTMLDialogElement | null>(null);
 
     useEffect(() => {
@@ -34,7 +36,7 @@ export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open} : DialogProp
 
     return(
         <dialog ref={dialogRef} className={`${style.dialog}`} >
-            <h2 className={style.titulo}>  {mensagem} </h2>
+            <h2 className={style.titulo}>  {m} </h2>
             <div className={style.botoes}>
             <Button onClick={() => closeModal(clickPlayAgain)}>
                 Jogar Novamente

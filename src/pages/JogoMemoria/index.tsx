@@ -18,6 +18,7 @@ export const JogoMemoria = () => {
     const [showMenu, setShowMenu] = useState(true);
     const [showDialog, setShowDialog] = useState(false);
     
+    
    
     useEffect(() => {
         iniciarJogo()
@@ -120,6 +121,7 @@ export const JogoMemoria = () => {
             clickPlayAgain={() => resetarJogo()}
             clickBackToMenu={() => handleShowMenu(true)}
             open={showDialog}
+            mensagem=""
             >
             </Dialog>
         </>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TabuleiroJogoVelha from '../../components/JogoDaVelha/TabuleiroJogoVelha';
 import style from './JogoDaVelha.module.scss'
 import { MenuSecundario } from '../../components/MenuSecundario';
-import { VICTORY_CONDITIONS, DRAW, CONTINUE, EMPTY } from '../../constants/jogoDaVelhaConstants';
+import { VICTORY_CONDITIONS, DRAW, CONTINUE, EMPTY, DRAW_MESSAGE, WIN_MESSAGE, DEFEAT_MESSAGE } from '../../constants/jogoDaVelhaConstants';
 import { Dialog } from '../../components/Dialog/Dialog';
 
 export const JogoDaVelha = () => {
@@ -11,6 +11,7 @@ export const JogoDaVelha = () => {
     const [simbolo, setSimbolo] = useState('X')
     const [areaClicada, setAreaClicada] = useState<string[]>(new Array(9).fill(''));
     const [jogoFinalizado, setJogoFinalizado] = useState(false);
+    const [mensagem, setMensagem] = useState("");
 
     const jogar = (id: number) => {
 
@@ -55,21 +56,29 @@ export const JogoDaVelha = () => {
         }
         const areasRestantes = novasJogadas.some(ac => ac === EMPTY);
         if (!areasRestantes) {
+            console.log("empate");
             return DRAW;
         }
         return CONTINUE;
     };
 
     const finalizarJogo = (elemento: string) => {
-        if (elemento && elemento !== CONTINUE) {
-            console.log("O " + elemento + " venceu o jogo");
+        let m  = elemento === 'O' ? DEFEAT_MESSAGE : WIN_MESSAGE
+        console.log(elemento);
+        if (elemento && elemento !== CONTINUE && elemento !== DRAW) {
             setJogoFinalizado(true);
-            setShowDialog(true)
+            setTimeout( () =>{
+            setMensagem(m);
+            setShowDialog(true);
+        }, 500
+        )
         }
         else if (elemento && elemento === DRAW) {
-            console.log("Empate!!");
             setJogoFinalizado(true);
-            setShowDialog(true)
+            setTimeout( () =>{
+            setMensagem(DRAW_MESSAGE);
+            setShowDialog(true);
+            }, 500)
         }
     }
 
@@ -94,7 +103,11 @@ export const JogoDaVelha = () => {
                     :
                     <>
                     <TabuleiroJogoVelha areaClicada={areaClicada} jogar={jogar}></TabuleiroJogoVelha>
-                    <Dialog open={showDialog} win={true} clickPlayAgain={resetarJogo} clickBackToMenu={() => handleShowMenuChange(true)} ></Dialog>
+                    <Dialog open={showDialog} 
+                    win={true}
+                    clickPlayAgain={resetarJogo}
+                     clickBackToMenu={() => handleShowMenuChange(true)}
+                     mensagem={mensagem} ></Dialog>
                     </>
             }
         </div>

@@ -13,3 +13,7 @@ export const VICTORY_CONDITIONS = [
 export const DRAW = 'DRAW';
 export const CONTINUE = 'CONTINUE'
 export const EMPTY = '';
+
+export const DRAW_MESSAGE = "O Jogo Empatou"
+export const WIN_MESSAGE = "Parabéns você ganhou!"
+export const DEFEAT_MESSAGE = "Que pena, você perdeu!"
