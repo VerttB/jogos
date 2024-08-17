@@ -1,4 +1,3 @@
-import { useState } from "react"
 import style from './BlocoSecundario.module.scss';
 interface BlocoSecundarioProps{
     valor:number,

@@ -1,6 +1,5 @@
 import style from './BlocoPrimario.module.scss'
 import { BlocoSecundario } from '../BlocoSecundario'
-import { gerarMatriz } from '../Sudoku.config';
 
 interface BlocoPrimarioProps{
     valores : Array<number>
