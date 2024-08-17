@@ -16,7 +16,7 @@ type TabuleiroProps = {
 }
 
 export const Tabuleiro: React.FC<TabuleiroProps> = ({ baralho, onCardClick }) => {
-    const tamanhoMultiplicador = (baralho.length <= 16 ? 0.3 
+    const tamanhoMultiplicador = (baralho.length <= 16 ? 1.2
                                   :baralho.length <= 32 ? 2 : 2.6);
 
                                   
