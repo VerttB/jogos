@@ -9,7 +9,7 @@ function App() {
   
   
   return (
-    <BrowserRouter>
+    <BrowserRouter  basename="/jogos/">
       <Routes>
         <Route path='/' element={<MenuPrincipal></MenuPrincipal>}></Route>
         <Route path='*' element={<ErrorPage/>}/>
