@@ -1,6 +1,6 @@
 @use 'sass:color';
 .dialog{
-    @include g.size(60%,40%);
+    @include g.size(55%,40%);
     background-color: color.scale(g.$bg-dark, $lightness: 5%);
     color: g.$text-color;
     left: 50%;
@@ -17,7 +17,12 @@
         @debug color.alpha($novaCor);
     }
 
+    .titulo{
+        margin-top: g.toRem(64);
+        font-size: g.toRem(48);
+    }
     .botoes{
+        height: 50%;
         margin-top: 3rem;
         @include g.flex-all-center;
         flex-direction: column;

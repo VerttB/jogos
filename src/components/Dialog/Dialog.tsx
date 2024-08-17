@@ -34,7 +34,7 @@ export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open} : DialogProp
 
     return(
         <dialog ref={dialogRef} className={`${style.dialog}`} >
-            <h2> {mensagem} </h2>
+            <h2 className={style.titulo}>  {mensagem} </h2>
             <div className={style.botoes}>
             <Button onClick={() => closeModal(clickPlayAgain)}>
                 Jogar Novamente

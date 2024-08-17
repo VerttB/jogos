@@ -3,10 +3,11 @@ import TabuleiroJogoVelha from '../../components/JogoDaVelha/TabuleiroJogoVelha'
 import style from './JogoDaVelha.module.scss'
 import { MenuSecundario } from '../../components/MenuSecundario';
 import { VICTORY_CONDITIONS, DRAW, CONTINUE, EMPTY } from '../../constants/jogoDaVelhaConstants';
-
+import { Dialog } from '../../components/Dialog/Dialog';
 
 export const JogoDaVelha = () => {
     const [showMenu, setShowMenu] = useState(true);
+    const [showDialog, setShowDialog] = useState(false)
     const [simbolo, setSimbolo] = useState('X')
     const [areaClicada, setAreaClicada] = useState<string[]>(new Array(9).fill(''));
     const [jogoFinalizado, setJogoFinalizado] = useState(false);
@@ -63,23 +64,25 @@ export const JogoDaVelha = () => {
         if (elemento && elemento !== CONTINUE) {
             console.log("O " + elemento + " venceu o jogo");
             setJogoFinalizado(true);
-            setTimeout(resetarJogo, 1500);
+            setShowDialog(true)
         }
         else if (elemento && elemento === DRAW) {
             console.log("Empate!!");
             setJogoFinalizado(true);
-            setTimeout(resetarJogo, 1500);
+            setShowDialog(true)
         }
     }
 
     const resetarJogo = () => {
         setAreaClicada(new Array(9).fill(''));
         setJogoFinalizado(false);
+        setShowDialog(false);
         setSimbolo('X')
     }
 
     const handleShowMenuChange = (status: boolean): void => {
-        setShowMenu(status)
+        setShowMenu(status);
+        resetarJogo();
     }
 
     return (
@@ -89,7 +92,10 @@ export const JogoDaVelha = () => {
                     ?
                     <MenuSecundario jogo="Jogo da Velha" fecharMenu={handleShowMenuChange} regras=''></MenuSecundario>
                     :
+                    <>
                     <TabuleiroJogoVelha areaClicada={areaClicada} jogar={jogar}></TabuleiroJogoVelha>
+                    <Dialog open={showDialog} win={true} clickPlayAgain={resetarJogo} clickBackToMenu={() => handleShowMenuChange(true)} ></Dialog>
+                    </>
             }
         </div>
     )
