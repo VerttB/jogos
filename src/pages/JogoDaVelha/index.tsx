@@ -70,7 +70,7 @@ export const JogoDaVelha = () => {
             setTimeout( () =>{
             setMensagem(m);
             setShowDialog(true);
-        }, 500
+        }, 300
         )
         }
         else if (elemento && elemento === DRAW) {
@@ -78,7 +78,7 @@ export const JogoDaVelha = () => {
             setTimeout( () =>{
             setMensagem(DRAW_MESSAGE);
             setShowDialog(true);
-            }, 500)
+            }, 300)
         }
     }
 

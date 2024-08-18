@@ -35,7 +35,7 @@ export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open, mensagem} : 
 
 
     return(
-        <dialog ref={dialogRef} className={`${style.dialog}`} >
+        <dialog ref={dialogRef} className={`${style.dialog} ${open ? style.open : ''}`} >
             <h2 className={style.titulo}>  {m} </h2>
             <div className={style.botoes}>
             <Button onClick={() => closeModal(clickPlayAgain)}>
