@@ -1,5 +1,7 @@
-
-export const forcaPalavras = {
+interface ForcaPalavras {
+    [key: string]: string[];
+}
+export const forcaPalavras:ForcaPalavras = {
     animais: [
         "Elefante",
         "Girafa",
