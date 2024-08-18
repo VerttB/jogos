@@ -23,7 +23,7 @@ export const geradorDeCarta = (dificuldade: string) => {
     const cartas = []
     for(let i = 0; i < quantidadeCartas;i++){
         for( let j = 1; j<3;j++){
-            const carta = {id: 2 * i + j, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: false}
+            const carta = {id: 2 * i + j, conteudo: `${String.fromCharCode(i+65)}`, cartaVirada: true}
             cartas.push(carta);
         }
     }

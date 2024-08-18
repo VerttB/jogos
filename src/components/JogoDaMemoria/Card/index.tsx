@@ -1,15 +1,15 @@
 import style from "./Card.module.scss"
 
 interface Carta{
-    id: number
+    
     conteudo: string,
     cartaVirada: boolean,
-    onCardClick: (id: number) => void,
+    onCardClick: () => void,
 }
 
-export const Card: React.FC<Carta> = ({id, conteudo,cartaVirada, onCardClick}) => {
+export const Card: React.FC<Carta> = ({ conteudo,cartaVirada, onCardClick}) => {
     return(
-        <div onClick={() => onCardClick(id)} className={`${style.carta} ${cartaVirada ? style.cartaVirada : '' }`} >
+        <div onClick={onCardClick} className={`${style.carta} ${cartaVirada ? style.cartaVirada : '' }`} >
 
             <div className={style.conteudoFrente}><p>{conteudo}</p></div>
             <div className={style.conteudoCosta}><p>?</p></div>

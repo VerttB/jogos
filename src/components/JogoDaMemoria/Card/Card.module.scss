@@ -15,14 +15,13 @@
         @include g.size(calc(var(--tamanho) * 1.5rem),calc(var(--tamanho) * 1rem));
     }
     @include g.breakpoint(laptop){
-        @include g.size(calc(var(--tamanho) * 1.5rem),calc(var(--tamanho) * 1rem));
+        @include g.size(calc(var(--tamanho) * 1.25rem),calc(var(--tamanho) * 0.8rem));
     }
     @include g.breakpoint(tablet){
-        @include g.size(calc(var(--tamanho) * 1.25rem),calc(var(--tamanho) * 1rem));
-
+        @include g.size(calc(var(--tamanho) * 1rem),calc(var(--tamanho) * 0.75rem));
     }
     @include g.breakpoint(mobile){
-        @include g.size(calc(var(--tamanho) * 1rem),calc(var(--tamanho) * 0.75rem));
+        @include g.size(calc(var(--tamanho) * 0.8rem),calc(var(--tamanho) * 0.5rem));
     }
 
 
@@ -62,7 +61,7 @@
             font-size: calc(var(--tamanho) * g.toRem(16));
             font-family: g.$Calistoga;
             font-weight: 500;
-            border: 4px solid rgb(83, 81, 81);
+            border: 4px solid rgb(0, 0, 0);
             padding:24px;
 
             @include g.breakpoint(desktop){
@@ -70,15 +69,17 @@
                 padding: 18px;
             }
             @include g.breakpoint(laptop){
-                font-size: calc(var(--tamanho) * g.toRem(8));
+                font-size: calc(var(--tamanho) * g.toRem(7));
                 padding: 18px;
             }
             @include g.breakpoint(tablet){
-                font-size: calc(var(--tamanho) * g.toRem(8));
+                font-size: calc(var(--tamanho) * g.toRem(6));
                 padding: 16px;
             }
             @include g.breakpoint(mobile){
                 font-size: calc(var(--tamanho) * g.toRem(4));
+                padding: 10px;
+                border-width: 1px;
             }
     
         }
@@ -94,9 +95,19 @@
 
             @include g.breakpoint(desktop){
                 font-size: calc(var(--tamanho) * g.toRem(8));
+              
+            }
+            @include g.breakpoint(laptop){
+                font-size: calc(var(--tamanho) * g.toRem(7));
+               
+            }
+            @include g.breakpoint(tablet){
+                font-size: calc(var(--tamanho) * g.toRem(6));
+                
             }
             @include g.breakpoint(mobile){
                 font-size: calc(var(--tamanho) * g.toRem(4));
+               
             }
         }
 
