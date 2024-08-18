@@ -1,5 +1,5 @@
 
-const palavras = {
+export const forcaPalavras = {
     animais: [
         "Elefante",
         "Girafa",

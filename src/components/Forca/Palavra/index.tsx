@@ -1,6 +1,8 @@
+import { forcaPalavras } from "../../../constants/forcaPalavras"
+
 export const Palavra = () => {
 
     return(
-        <p>Eai</p>
+        console.log(forcaPalavras)
     )
 }
