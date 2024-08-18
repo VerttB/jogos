@@ -15,7 +15,7 @@ export default function Seletor({setDificuldade}:SeletorProps){
                 MÉDIO
             </Button>
             <Button onClick={() => setDificuldade('DIFICIL') }>
-                DIFICIL
+                DIFÍCIL
             </Button>
         </div>
     )
