@@ -1,26 +1,30 @@
-
+@use 'sass:color';
 .menuPrincipal {
   
     @include g.flex-all-center;
+    justify-content: start;
     @include g.size(100vh, 100%);
     flex-direction: column;
     background-color: g.$bg-dark;
     color: white;
     .titulo{
-        margin-top: 5%;
+        margin-top: 2%;
         font-size: g.toRem(32);
         text-align: center
     }
     .jogos{
-        @include g.size(50%,50%);
-      
+        @include g.size(50%,70%);
         padding: g.toRem(32);
         margin-top: g.toRem(64);
         display: flex;
+        background-color: #282A3A;
+
         gap: g.toRem(64);
         flex-wrap: wrap;
         align-content: flex-start;
         overflow: auto;
+        border-radius: g.toRem(8); 
+        box-shadow: 0 g.toRem(4) g.toRem(8) rgba(0, 0, 0, 0.2);
 
         @include g.breakpoint(mobile){
             @include g.size(80% ,90%);
