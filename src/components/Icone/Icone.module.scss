@@ -5,10 +5,14 @@
     text-align: center;
     margin-left: 25%;
     
+    
     .imagem{
         border-radius: 50%;
         @include g.size(100%,100%);
         border: 2px solid white;
+        -webkit-box-shadow: 2px 2px 50px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 50px -4px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 50px -4px rgba(0,0,0,0.75);
     }
 
     &:hover > .imagem {
@@ -16,16 +20,13 @@
     }
 
     .paragrafo{
-        color: g.$text-color;
-        font-size: g.toRem(16);
-        
-        font-family: g.$Calistoga;
+        @include g.text-format(g.toRem(16),g.$text-color, g.$Calistoga, 300);
     }
 
     &:hover > .paragrafo {
         
         text-decoration:underline;
-
-        color: color.scale(white, $lightness: 80%);
+        color: color.scale(white, $lightness: -15%);
+        transform: scale(1.03);
     }
 }
