@@ -20,11 +20,9 @@ export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open, mensagem} : 
 
     useEffect(() => {
         if(open) {
-            console.log("errado")
             dialogRef.current?.showModal();}
         else{ 
             dialogRef.current?.close();
-            console.log("fechei?")
         }
     },[open])
     
@@ -35,7 +33,7 @@ export const Dialog = ({win, clickPlayAgain, clickBackToMenu, open, mensagem} : 
 
 
     return(
-        <dialog ref={dialogRef} className={`${style.dialog} ${open ? style.open : ''}`} >
+        <dialog ref={dialogRef} className={style.dialog} >
             <h2 className={style.titulo}>  {m} </h2>
             <div className={style.botoes}>
             <Button onClick={() => closeModal(clickPlayAgain)}>

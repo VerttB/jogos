@@ -32,19 +32,23 @@ export const JogoMemoria = () => {
     const iniciarJogo = async () => {
         setShowDialog(false);
         if(dificuldade){
-            console.log('iuniciando')
+            console.log('iuniciando');
             setBaralho(await Embaralhar(geradorDeCarta(dificuldade)));
-            setCartasAcertadas([]);
-            setCartasViradas([]);
-            setJogoIniciado(true);
-            setShowMenu(false); 
+            setShowMenu(false);
+
+            setTimeout(() => {
+                fliparCarta(undefined, false);
+                setJogoIniciado(true);
+            }, 2000);
         }
     }
 
     const fimDeJogo = () : void => {
         if (cartasAcertadas.length === baralho.length && jogoiniciado) {
-            setJogoIniciado(false)
-            setShowDialog(true)
+            setJogoIniciado(false);
+            setShowDialog(true);
+            setCartasAcertadas([]);
+            setCartasViradas([])
         }
     };
     
@@ -66,10 +70,7 @@ export const JogoMemoria = () => {
     }
 
     const resetarJogo =  ()  => {
-        fliparCarta(undefined, false);
-        
         iniciarJogo();
-        console.log("resetando jogo");
     }
 
     const encontrarCarta = (cartaId : number) => {
@@ -85,12 +86,12 @@ export const JogoMemoria = () => {
         fliparCarta(id);
 
         const newCartasViradas = [...cartasViradas, id];
-        setCartasViradas([...cartasViradas, id]);
+        setCartasViradas(cv => [...cv, id]);
 
 
         if (newCartasViradas.length === MAX_CARTAS_VIRADAS) {
             const [primeiraCarta, segundaCarta] = newCartasViradas;
-            const [ primeiraCartaConteudo, segundaCartaConteudo] = [encontrarCarta(primeiraCarta).conteudo, encontrarCarta(segundaCarta).conteudo]
+            const [primeiraCartaConteudo, segundaCartaConteudo] = [encontrarCarta(primeiraCarta).conteudo, encontrarCarta(segundaCarta).conteudo]
 
             if (primeiraCartaConteudo === segundaCartaConteudo) {
                 setCartasAcertadas(() => [...cartasAcertadas, primeiraCarta, segundaCarta]);
@@ -114,7 +115,7 @@ export const JogoMemoria = () => {
             dificuldade === "" ?
             <Seletor setDificuldade={setDificuldade}></Seletor> 
             :<>
-            <Tabuleiro onCardClick={onCardClick} baralho={baralho}>
+            <Tabuleiro jogoIniciado={jogoiniciado} onCardClick={onCardClick} baralho={baralho}>
             </Tabuleiro>
             <Dialog
             win={true}

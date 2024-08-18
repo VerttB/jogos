@@ -26,6 +26,7 @@
         border-radius: g.toRem(8); 
         box-shadow: 0 g.toRem(4) g.toRem(8) rgba(0, 0, 0, 0.2);
 
+       
         @include g.breakpoint(mobile){
             @include g.size(80% ,90%);
         }

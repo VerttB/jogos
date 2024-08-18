@@ -13,6 +13,14 @@
     &::backdrop{
         background-color: color.scale(#0C0C0C, $alpha: -50%);
     }
+
+    @include g.breakpoint(desktop){
+        @include g.size(80% ,60%);
+    }
+    @include g.breakpoint(laptop){
+        @include g.size(50% ,70%);
+    }
+
     @include g.breakpoint(mobile){
         @include g.size(50%, 90%);
     }
