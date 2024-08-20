@@ -5,20 +5,17 @@ import style from './JogoDaForca.module.scss';
 
 export const JogoDaForca = () => {
     const [secretWord, setSecretWord] = useState("Carro".split(''));
-    const [guessedCharacter, setGuessedCharacter] = useState("");
-    const [guessedWord, setGuessedWord] = useState([''])
+    const [guessedCharacter, setGuessedCharacter] = useState([""]);
+    const [guessedWord, setGuessedWord] = useState([""])
     const [tries, setTries] = useState(5);
 
 
     const isGuessRight = () => {
-        let p:string[] = [];
-        secretWord.forEach((sw,i) => {
-            if(sw === guessedCharacter) p.push(sw);
-            else p.push('_');
+        setGuessedWord( gw => {
+           
         }
-    );
-        setGuessedWord([...p]);
-        console.log(p);
+        
+        )
     }
 
     useEffect(() => {
