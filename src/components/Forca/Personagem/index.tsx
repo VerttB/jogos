@@ -35,7 +35,13 @@ const LEG = ({side} :sideProps) => {
     )
 }
 
-export const Personagem = () => {
+interface personagemProps{
+    tentativas:number
+}
+
+export const Personagem:React.FC<personagemProps> = ({tentativas}) => {
+    
+
 
     return(
         <div className={style.personagem}>

@@ -6,7 +6,7 @@ export const Palavra = () => {
     return (
         <div>
             {/* Usa o elemento <pre> para preservar a formatação da string JSON */}
-            <pre>{palavrasDisponiveis}</pre>
+           
         </div>
     );
 }
