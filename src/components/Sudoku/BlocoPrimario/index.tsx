@@ -7,7 +7,6 @@ interface BlocoPrimarioProps{
 
 export const BlocoPrimario = ({valores}:BlocoPrimarioProps ) => {
     const blocosSecundario = Array(9).fill('');
-    console.log(valores)
     return(
         <div className={style.blocoPrimario}>
             {blocosSecundario.map((_,i) => <BlocoSecundario key={i} 

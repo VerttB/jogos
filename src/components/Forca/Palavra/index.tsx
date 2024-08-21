@@ -1,12 +1,17 @@
-import { forcaPalavras } from "../../../constants/forcaPalavras";
-
-export const Palavra = () => {
-    const palavrasDisponiveis = JSON.stringify(forcaPalavras, null, 2);
+import style from './Palavra.module.scss';
+interface palavraProps{
+    palavra:string[]
+}
+export const Palavra:React.FC<palavraProps> = ({palavra}) => {
 
     return (
-        <div>
-            {/* Usa o elemento <pre> para preservar a formatação da string JSON */}
-            <pre>{palavrasDisponiveis}</pre>
-        </div>
+       <div className={style.palavra}>
+            {palavra.map((p,_) => 
+
+            <span className={style.bar}>
+                <span className={style.letra}>{p}</span>
+            </span>)
+            }
+       </div>
     );
 }

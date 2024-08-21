@@ -1,0 +1,10 @@
+.tecla{
+    width: g.toRem(64);
+    height: g.toRem(64);
+    border-radius: 4px;
+
+    @include g.breakpoint(laptop){
+    width: g.toRem(48);
+    height: g.toRem(48);
+    }
+}

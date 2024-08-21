@@ -1,8 +1,7 @@
-interface ForcaPalavras {
-    [key: string]: string[];
-}
-export const forcaPalavras:ForcaPalavras = {
-    animais: [
+
+
+
+export const forcaPalavras:string[] = [
         "Elefante",
         "Girafa",
         "Rinoceronte",
@@ -12,9 +11,7 @@ export const forcaPalavras:ForcaPalavras = {
         "Arara",
         "Leão",
         "Pinguim",
-        "Camaleão"
-    ],
-    frutas: [
+        "Camaleão",
         "Abacaxi",
         "Cereja",
         "Framboesa",
@@ -24,9 +21,7 @@ export const forcaPalavras:ForcaPalavras = {
         "Nectarina",
         "Carambola",
         "Romã",
-        "Melancia"
-    ],
-    cores: [
+        "Melancia",
         "Bordô",
         "Turquesa",
         "Lavanda",
@@ -36,9 +31,7 @@ export const forcaPalavras:ForcaPalavras = {
         "Cinza",
         "Dourado",
         "Lilás",
-        "Azul-marinho"
-    ],
-    paises: [
+        "Azul-marinho",
         "Austrália",
         "Dinamarca",
         "Singapura",
@@ -48,9 +41,7 @@ export const forcaPalavras:ForcaPalavras = {
         "Grécia",
         "Hungria",
         "Lituânia",
-        "Suíça"
-    ],
-    objetos: [
+        "Suíça",
         "Calculadora",
         "Lanterna",
         "Parafuso",
@@ -60,9 +51,7 @@ export const forcaPalavras:ForcaPalavras = {
         "Almofada",
         "Relógio",
         "Espelho",
-        "Caderno"
-    ],
-    profissoes: [
+        "Caderno",
         "Arquiteto",
         "Bibliotecário",
         "Engenheiro",
@@ -72,6 +61,6 @@ export const forcaPalavras:ForcaPalavras = {
         "Programador",
         "Contador",
         "Designer",
-        "Eletricista"
-    ],
-}
+        "Eletricista",
+    
+]
