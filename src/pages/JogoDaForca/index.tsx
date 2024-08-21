@@ -20,7 +20,7 @@ const removerAcentos = (texto: string): string[] => {
 };
 export const JogoDaForca = () => {
     const [secretWord, setSecretWord] = useState(removerAcentos(escolhePalavra().toUpperCase()));
-    const [guessedCharacter, setGuessedCharacter] = useState([""]);
+    // const [guessedCharacter, setGuessedCharacter] = useState([""]);
     const [guessedWord, setGuessedWord] = useState(Array(secretWord.length).fill(' '))
     const [tries, setTries] = useState(6);
     const alfabeto:string[] = [];
@@ -28,7 +28,7 @@ export const JogoDaForca = () => {
     preencherAlfabeto(alfabeto)
 
   
-    const isGuessRight = (chute: string, fundo : any) => {
+    const isGuessRight = (chute: string) => {
       
        const word = guessedWord.map((w,i) => {
             if(chute === secretWord[i]) return chute;
@@ -39,7 +39,7 @@ export const JogoDaForca = () => {
         });
         if(!word.includes(chute)){
             setTries(t => t - 1);
-            fundo = "#FF0000";
+
             
             console.log(tries);
         }
@@ -52,6 +52,7 @@ export const JogoDaForca = () => {
     useEffect(() => {
         if(guessedWord.join('') === secretWord.join('')){
             console.log("Parabéns, você ganhou!!!");
+            setSecretWord(removerAcentos(escolhePalavra().toUpperCase()))
         }
     },[guessedWord])
 
@@ -63,7 +64,7 @@ export const JogoDaForca = () => {
     const onLetterClick = (e:any) => {
         console.log(e.target.innerText);
         console.log(e.target.style.backgroundColor)
-        isGuessRight(e.target.innerHTML, e.target.style.backgroundColor)
+        isGuessRight(e.target.innerHTML)
     }
 
 
