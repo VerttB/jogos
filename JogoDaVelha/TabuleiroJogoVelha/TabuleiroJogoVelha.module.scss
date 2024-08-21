@@ -1,0 +1,35 @@
+@use 'sass:color';
+@use 'sass:math';
+
+.tabuleiroJogoVelha {
+    @include g.size(g.toRem(520), g.toRem(520));
+    display: grid;
+    padding: 2px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: g.toRem(8);
+    background-color: #000;
+    border-radius: g.toRem(16);
+    border: g.toRem(3) solid white;
+    overflow: hidden;
+
+    @include g.breakpoint(mobile) {
+        @include g.size(g.toRem(256), g.toRem(256));
+    }
+
+    .area {
+        @include g.size(100%, 100%);
+        @include g.flex-all-center();
+        @include g.text-format(g.toRem(64), g.$text-color, g.$Poppins, 600);
+        aspect-ratio: 1 / 1;
+        background-color: #31363F;
+        border: none;
+        cursor: pointer;
+        @include g.breakpoint(mobile) {
+            font-size: g.toRem(32);
+        }
+
+        &:hover {
+            background-color: color.scale(#31363F, $lightness: 10%);
+        }
+    }
+}

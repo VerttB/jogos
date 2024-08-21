@@ -1,0 +1,20 @@
+
+
+.errorPage{
+    height: 100vh;
+    width: 100%;
+    background-color: g.$bg-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .titulo{
+        @include g.text-format(g.toRem(64), white, g.$Poppins);
+    }
+
+    .paragrafo{
+        @include g.text-format(g.toRem(32), white, g.$Poppins);
+    }
+
+}

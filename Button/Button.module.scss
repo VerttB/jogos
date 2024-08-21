@@ -1,0 +1,22 @@
+
+@use 'sass:color';
+
+.button{
+    padding: 4px 32px;
+    font-size: g.toRem(48);
+    @include g.size($w: g.toRem(512));
+    cursor: pointer;
+    background-color: #468585;
+    border: none;
+    font-family: g.$Poppins;
+    border-radius: 8px;
+    color: g.$text-color;
+
+    @include g.breakpoint(mobile){
+        @include g.size($w: g.toRem(256));
+        font-size: g.toRem(24);
+    }
+    &:hover{
+       background-color: color.scale(#468585,$lightness: 10%);
+    }
+}

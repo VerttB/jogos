@@ -1,0 +1,119 @@
+@use '../../../assets/scss/images.scss' as image;
+
+.carta{
+    
+    @include g.size(calc(var(--tamanho) * 2rem),calc(var(--tamanho) * 1.5rem) );
+    @include g.flex-all-center;
+    transform: rotateY(0deg);
+    transition: 0.5s;
+    cursor: pointer;
+
+
+
+
+    @include g.breakpoint(desktop){
+        @include g.size(calc(var(--tamanho) * 1.5rem),calc(var(--tamanho) * 1rem));
+    }
+    @include g.breakpoint(laptop){
+        @include g.size(calc(var(--tamanho) * 1.25rem),calc(var(--tamanho) * 0.8rem));
+    }
+    @include g.breakpoint(tablet){
+        @include g.size(calc(var(--tamanho) * 1rem),calc(var(--tamanho) * 0.75rem));
+    }
+    @include g.breakpoint(mobile){
+        @include g.size(calc(var(--tamanho) * 0.8rem),calc(var(--tamanho) * 0.5rem));
+    }
+
+
+    &.cartaVirada{
+        transform: rotateY(180deg);
+        transition: 0.5s;
+
+        .conteudoFrente{
+            transform: rotateY(0deg);
+            transform: scaleX(-1);
+        }
+
+        .conteudoCosta{
+            transform: rotateY(180deg);
+        }
+    }
+
+
+    .conteudoFrente, .conteudoCosta{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transition: transform 0.6s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        border: 2px solid #F5EDED;
+    }
+
+    .conteudoFrente{
+        background-color: #E7D37F ;
+        color: black;
+       
+        p {
+            font-size: calc(var(--tamanho) * g.toRem(16));
+            font-family: g.$Calistoga;
+            font-weight: 500;
+            border: 4px solid rgb(0, 0, 0);
+            padding:24px;
+
+            @include g.breakpoint(desktop){
+                font-size: calc(var(--tamanho) * g.toRem(8));
+                padding: 18px;
+            }
+            @include g.breakpoint(laptop){
+                font-size: calc(var(--tamanho) * g.toRem(7));
+                padding: 18px;
+            }
+            @include g.breakpoint(tablet){
+                font-size: calc(var(--tamanho) * g.toRem(6));
+                padding: 16px;
+            }
+            @include g.breakpoint(mobile){
+                font-size: calc(var(--tamanho) * g.toRem(4));
+                padding: 10px;
+                border-width: 1px;
+            }
+    
+        }
+    }
+
+    .conteudoCosta{
+        background-image: image.$cartaFundo;
+        p{
+            font-size: calc(var(--tamanho) * g.toRem(16));
+            @include g.text-clip(#bbe44a ,#f5fdfd );
+            font-family: g.$Calistoga;
+            font-weight: bold;
+
+            @include g.breakpoint(desktop){
+                font-size: calc(var(--tamanho) * g.toRem(8));
+              
+            }
+            @include g.breakpoint(laptop){
+                font-size: calc(var(--tamanho) * g.toRem(7));
+               
+            }
+            @include g.breakpoint(tablet){
+                font-size: calc(var(--tamanho) * g.toRem(6));
+                
+            }
+            @include g.breakpoint(mobile){
+                font-size: calc(var(--tamanho) * g.toRem(4));
+               
+            }
+        }
+
+    }
+    
+}
+
+
+

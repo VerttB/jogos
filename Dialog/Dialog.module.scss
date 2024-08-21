@@ -1,0 +1,63 @@
+@use 'sass:color';
+.dialog{
+    @include g.size(55%,30%);
+    background-color: color.scale(#0C0C0C, $lightness: 5%, $alpha: -2%);
+    color: g.$text-color;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    &::backdrop{
+        background-color: color.scale(#0C0C0C, $alpha: -50%);
+    }
+
+    @include g.breakpoint(desktop){
+        @include g.size(80% ,60%);
+    }
+    @include g.breakpoint(laptop){
+        @include g.size(50% ,70%);
+    }
+
+    @include g.breakpoint(mobile){
+        @include g.size(50%, 90%);
+    }
+
+    .titulo{
+        margin-top: g.toRem(64);
+        font-size: g.toRem(48);
+
+        @include g.breakpoint(mobile){
+            margin-top: g.toRem(32);
+        }
+    }
+    .botoes{
+        height: 50%;
+        margin-top: 3rem;
+        @include g.flex-all-center;
+        flex-direction: column;
+        gap: 1rem;
+
+        @include g.breakpoint(mobile){
+            height: 30%;
+        }
+    }
+}
+
+
+dialog[open] {
+    animation: fadein 0.2s ease-in-out forwards;
+  }
+  
+  @keyframes fadein{
+    0%{
+      opacity:0;
+      transform: translate(-50%,-50%) scale(0.95);
+    }
+    100%{
+      opacity:1;
+      transform: translate(-50%,-50%) scale(1);
+    }
+  }

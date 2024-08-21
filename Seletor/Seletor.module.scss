@@ -1,0 +1,11 @@
+
+.seletor{
+    @include g.flex-all-center;
+    flex-direction: column;
+    gap: g.toRem(16);
+    text-align: center;
+    .titulo{
+        color: g.$text-color;
+        font-size: g.toRem(64);
+    }
+}

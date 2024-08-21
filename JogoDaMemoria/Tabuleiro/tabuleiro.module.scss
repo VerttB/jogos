@@ -1,0 +1,23 @@
+
+.tabuleiro{
+    @include g.size(100%, 80%);
+    @include g.flex-all-center;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 1.25rem;
+    text-align: center;
+
+    @include g.breakpoint(desktop){
+        gap: 0.5rem;
+        width: 95%;
+    }
+    @include g.breakpoint(laptop){
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    @include g.breakpoint(mobile){
+        gap: 0.2rem;
+        width: 95%;
+    }
+}
