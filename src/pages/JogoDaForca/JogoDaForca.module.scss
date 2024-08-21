@@ -17,8 +17,17 @@
         flex-wrap: wrap;
         gap: g.toRem(2);
 
+        @include g.breakpoint(desktop){
+            width: 50%;
+        }
         @include g.breakpoint(laptop){
             width: 70%;
+        }
+        @include g.breakpoint(tablet){
+            width: 70%;
+        }
+        @include g.breakpoint(mobile){
+            width: 90%;
         }
     }
   

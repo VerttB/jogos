@@ -76,13 +76,13 @@ export const Desenho:React.FC<personagemProps> = ({tentativas}) => {
 
 
     return(
-        <div className={style.desenho}>
+       
         <div className={style.pole}>
             <POLE_TOP></POLE_TOP>
             <HOOK></HOOK>
             <POLE_BAR></POLE_BAR>
             <POLE_BASE></POLE_BASE>
-        </div>
+        
         <div className={style.personagem}>
         <HEAD hidden={!(tentativas < 6)}></HEAD>
         <TORSO hidden={!(tentativas < 5)}></TORSO>
@@ -90,7 +90,8 @@ export const Desenho:React.FC<personagemProps> = ({tentativas}) => {
         <ARM hidden={!(tentativas < 3)} side="left"></ARM>
         <LEG hidden={!(tentativas < 2)} side='right'></LEG>
         <LEG hidden={!(tentativas < 1)} side='left'></LEG>
+        </div>
        </div>
-       </div>
+    
     )
 }

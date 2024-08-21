@@ -1,9 +1,9 @@
 
 $corForca: #FFF5E4;
-.desenho{
-    display: flex;
-    flex-direction: row;
-    align-items: self-end;
+
+   
+.pole{
+    height: fit-content;
 .personagem{
     display: grid;
     grid-template-areas: 
@@ -11,13 +11,11 @@ $corForca: #FFF5E4;
     "left-arm torso right-arm"
     "left-leg . right-leg";
     align-content: center ;
+    grid-area: personagem;
     @include g.size(fit-content,fit-content);
-    position: absolute;
-    left: 54%;
-    transform: translate(-50%, -25%);
-    top: 20%;
-
-   
+    position: relative;
+    top: 13%;
+    transform: translateX(-50%);
 .head{
     @include g.size(50px,50px);
     grid-area: head;
@@ -70,12 +68,12 @@ $corForca: #FFF5E4;
 
 }
 
-.pole{
+
     display: grid;
     grid-template-areas: 
-    ". poleTop ."
-    ". poleBar ."
-    ". poleBase .";
+    ". poleTop . hook"
+    ". poleBar . personagem"
+    ". poleBase . personagem";
     
     
     .poleBar{
@@ -89,32 +87,35 @@ $corForca: #FFF5E4;
 
     .poleBase{
         background-color: $corForca;
-        width: 130px;
+        width: 160px;
         height: 8px;
         grid-area: poleBase;
     }
 
     .poleTop{
         background-color: $corForca;
-        width: 85px;
+        width: 80px;
         height: 8px;
         grid-area: poleTop;
-        justify-self:right;
+        justify-self:self-end;
         position: relative;
-        left: 16px;
+        top: 100%;
+        
     }
 
     .hook{
         height: 36px;
         width: 5px;
-        position: absolute;
+        grid-area: hook;
         background-color: $corForca;
-        left: 54%;
-        transform: translateX(-50%);
-        
+        top: 100%;
+        transform:translateX(-50%);
+        position: relative;
+       
     }
+
 }
-}
+
 
 .hidden{
     visibility:hidden;

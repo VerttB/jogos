@@ -8,14 +8,22 @@
         height: 64px;
         display: flex;
         justify-content: center;
+        font-size: g.toRem(48);
 
         .letra{
             @include g.text-format(
-            g.toRem(48),
+            100%,
             g.$text-color,
             g.$Poppins,
             500
             );
+
+        
+        }
+
+        @include g.breakpoint(mobile){
+            @include g.size(g.toRem(48), g.toRem(24));
+            font-size: g.toRem(32);
         }
     }
 }

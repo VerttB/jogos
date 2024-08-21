@@ -8,4 +8,7 @@
     width: g.toRem(48);
     height: g.toRem(48);
     }
+    @include g.breakpoint(mobile){
+        @include g.size(g.toRem(36), g.toRem(36));
+    }
 }

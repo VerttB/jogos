@@ -52,10 +52,15 @@ export const JogoDaForca = () => {
     useEffect(() => {
         if(guessedWord.join('') === secretWord.join('')){
             console.log("Parabéns, você ganhou!!!");
-            setSecretWord(removerAcentos(escolhePalavra().toUpperCase()))
+            setSecretWord(removerAcentos(escolhePalavra().toUpperCase()));
+            setTries(6);
+            
         }
     },[guessedWord])
 
+    useEffect(() => {
+        setGuessedWord(Array(secretWord.length).fill(' '))
+    },[secretWord])
     useEffect(() => {
         if(tries === 0){
             console.log("Que pena, você perdeu")
