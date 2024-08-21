@@ -1,0 +1,21 @@
+.palavra{
+    display: flex;
+    gap: 12px;
+    margin: 24px 0 64px 0;
+    .bar{
+        border-bottom: 4px solid white;
+        width: 36px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+
+        .letra{
+            @include g.text-format(
+            g.toRem(48),
+            g.$text-color,
+            g.$Poppins,
+            500
+            );
+        }
+    }
+}
