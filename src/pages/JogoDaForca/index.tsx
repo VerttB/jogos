@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Palavra } from "../../components/Forca/Palavra"
 import { Desenho} from "../../components/Forca/Personagem/Desenho"
 import style from './JogoDaForca.module.scss';
