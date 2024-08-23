@@ -27,7 +27,8 @@
             width: 70%;
         }
         @include g.breakpoint(mobile){
-            width: 90%;
+            width: 95%;
+            gap: 0;
         }
     }
   

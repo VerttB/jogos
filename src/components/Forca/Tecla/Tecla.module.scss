@@ -1,14 +1,38 @@
+@use 'sass:color';
+$corTecla: #F7F7F8;
 
 .tecla{
     width: g.toRem(64);
     height: g.toRem(64);
     border-radius: 4px;
-
+    background-color: #F7F7F8;
     @include g.breakpoint(laptop){
-    width: g.toRem(48);
+    width: g.toRem(36);
     height: g.toRem(48);
     }
+
+
+    
     @include g.breakpoint(mobile){
-        @include g.size(g.toRem(36), g.toRem(36));
+        @include g.size(g.toRem(48), g.toRem(48));
+    }
+
+    &:disabled{
+        background-color: color.scale($corTecla, $lightness: 10%);
+        border: none;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        cursor: not-allowed;
+
+    }
+
+    .letra{
+        border: 3px solid rgb(0, 0, 0);
+        padding: 20% 25%;
+        height: 50%;
+        width: 50%;
+        font-size: g.toRem(18);
+
     }
 }

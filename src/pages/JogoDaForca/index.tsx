@@ -66,10 +66,9 @@ export const JogoDaForca = () => {
             console.log("Que pena, você perdeu")
         }
     },[tries])
-    const onLetterClick = (e:any) => {
-        console.log(e.target.innerText);
-        console.log(e.target.style.backgroundColor)
-        isGuessRight(e.target.innerHTML)
+    const onLetterClick = (letra:string) => {
+      
+        isGuessRight(letra)
     }
 
 
@@ -79,7 +78,7 @@ export const JogoDaForca = () => {
         <Desenho tentativas={tries}></Desenho>
         <Palavra palavra={guessedWord}></Palavra>
         <div className={style.letras}>
-        {alfabeto.map(a => <Tecla key={a} onClick={onLetterClick} letra={a}></Tecla>)}
+        {alfabeto.map(a => <Tecla key={a} secretWord={secretWord} onClick={onLetterClick} letra={a}></Tecla>)}
         </div>
         </div>
     )

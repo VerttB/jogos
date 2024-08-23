@@ -6,9 +6,9 @@ export const Palavra:React.FC<palavraProps> = ({palavra}) => {
 
     return (
        <div className={style.palavra}>
-            {palavra.map((p,_) => 
+            {palavra.map((p,i) => 
 
-            <span className={style.bar}>
+            <span key={i} className={style.bar}>
                 <span className={style.letra}>{p}</span>
             </span>)
             }
