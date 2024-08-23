@@ -18,13 +18,16 @@ $breakpoints: (
     ),
     xl:(
         min:f.toRem(1281),
+        max:f.toRem(1920),
+    ),
+    xxl :(
+        min:f.toRem(1921),
+        
     )
 );
 
 @mixin breakpoint($breakpoint){
     $br: map-get($breakpoints, $breakpoint);
-    @debug map-get($br, min );
-    @debug map-get($br, max );
     @if map-has-key($br, 'min' ) and map-has-key($br , 'max'){
         $br-min: map-get($br, min );
         $br-max: map-get($br, max);

@@ -32,6 +32,19 @@
         @include g.breakpoint(mobile){
             margin-top: g.toRem(32);
         }
+        @include g.breakpoint(tablet){
+            font-size: g.toRem(24);
+        }
+        @include g.breakpoint(laptop){
+            font-size: g.toRem(24);
+        }
+        @include g.breakpoint(desktop){
+            font-size: g.toRem(24);
+        }
+        @include g.breakpoint(xl){
+            font-size: g.toRem(32);
+        }
+        
     }
     .botoes{
         height: 50%;

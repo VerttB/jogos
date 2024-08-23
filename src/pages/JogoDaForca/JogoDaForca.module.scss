@@ -4,8 +4,9 @@
     color: g.$text-color;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    align-content: center;
+    flex-direction: column;
     input{
         width: 100px;
         height: 100px;
@@ -19,12 +20,15 @@
 
         @include g.breakpoint(desktop){
             width: 50%;
+            gap: g.toRem(4);
         }
         @include g.breakpoint(laptop){
             width: 70%;
+            gap: g.toRem(4);
         }
         @include g.breakpoint(tablet){
             width: 70%;
+            gap: g.toRem(24);
         }
         @include g.breakpoint(mobile){
             width: 95%;

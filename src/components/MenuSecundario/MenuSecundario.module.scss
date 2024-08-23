@@ -15,6 +15,17 @@
         @include g.breakpoint(mobile){
            font-size: g.toRem(32);
         }
+
+        @include g.breakpoint(tablet){
+            font-size: g.toRem(24);
+        }
+        @include g.breakpoint(laptop){
+            font-size: g.toRem(32);
+        }
+        @include g.breakpoint(desktop){
+            font-size: g.toRem(24);
+        }
+
     }
 
 }
