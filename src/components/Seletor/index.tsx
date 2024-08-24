@@ -15,7 +15,7 @@ export default function Seletor({setConfig, config,titulo, btnSize = "normal", l
             <h3 className={style.titulo}>{titulo}</h3>
             <div className={`${style.seletores} ${style[layout]}`}>
             {config.map(c => 
-            <Button size={btnSize} onClick={() => setConfig(RemoverAssento(c).join(''))}>
+            <Button size={btnSize} onClick={() => setConfig(c)}>
                 {c}
             </Button>)}
             </div>
