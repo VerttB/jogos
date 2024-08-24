@@ -1,4 +1,10 @@
+export const alfabetoForca: string[] = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 
+        '+', '#'
+    ];
 
+export const MAX_TRIES = 6;
 interface PalavrasObject{
 [key: string]: string[]
 }
@@ -154,8 +160,3 @@ export const forcaPalavras: PalavrasObject = {
         ]
 };
 
-export const alfabetoForca: string[] = [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 
-        '+', '#'
-    ];

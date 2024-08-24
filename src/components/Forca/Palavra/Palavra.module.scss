@@ -2,6 +2,10 @@
     display: flex;
     gap: 12px;
     margin: 24px 0 64px 0;
+
+    @include g.breakpoint(mobile){
+        margin: 0px 0 16px 0;
+    }
     .bar{
         border-bottom: 4px solid white;
         width: 36px;

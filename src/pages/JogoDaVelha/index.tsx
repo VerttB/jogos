@@ -37,7 +37,7 @@ export const JogoDaVelha = () => {
         while (novasJogadas[pos] !== '') {
             pos = Math.floor(Math.random() * 9);
         }
-        console.log("Ia jogou")
+      
 
         novasJogadas[pos] = 'O';
         setAreaClicada([...novasJogadas]);
@@ -56,7 +56,7 @@ export const JogoDaVelha = () => {
         }
         const areasRestantes = novasJogadas.some(ac => ac === EMPTY);
         if (!areasRestantes) {
-            console.log("empate");
+    
             return DRAW;
         }
         return CONTINUE;
@@ -64,7 +64,6 @@ export const JogoDaVelha = () => {
 
     const finalizarJogo = (elemento: string) => {
         let m  = elemento === 'O' ? DEFEAT_MESSAGE : WIN_MESSAGE
-        console.log(elemento);
         if (elemento && elemento !== CONTINUE && elemento !== DRAW) {
             setJogoFinalizado(true);
             setTimeout( () =>{

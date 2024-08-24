@@ -3,7 +3,7 @@ import { Palavra } from "../../components/Forca/Palavra"
 import { Desenho} from "../../components/Forca/Personagem/Desenho"
 import style from './JogoDaForca.module.scss';
 import { Tecla } from "../../components/Forca/Tecla";
-import { alfabetoForca, forcaPalavras } from "../../constants/forcaPalavras";
+import { alfabetoForca, forcaPalavras, MAX_TRIES } from "../../constants/forcaPalavras";
 import { MenuSecundario } from "../../components/MenuSecundario";
 import { Dialog } from "../../components/Dialog/Dialog";
 import { RemoverAssento } from "../../utils";
@@ -12,7 +12,6 @@ import Seletor from "../../components/Seletor";
 
 function escolhePalavra(tema : string){
     const palavras = forcaPalavras[tema]
-    console.log(palavras)
     const random = Math.floor(Math.random() * palavras.length);
     return palavras[random]
 }
@@ -24,7 +23,7 @@ export const JogoDaForca = () => {
     const [showMenu, setShowMenu] = useState(true);
     const [showDialog, setShowDialog] = useState(false);
     const [mensagem, setMensagem] = useState("")
-    const [tries, setTries] = useState(6);
+    const [tries, setTries] = useState(MAX_TRIES);
     const [tema, setTema] = useState("");
     const alfabeto:string[] = alfabetoForca
 
@@ -36,7 +35,7 @@ export const JogoDaForca = () => {
     const iniciarJogo = () => {
         setShowDialog(false);
         setSecretWord(RemoverAssento(escolhePalavra(tema).toUpperCase()));
-        setTries(6);
+        setTries(MAX_TRIES);
 
     }
 
@@ -52,11 +51,10 @@ export const JogoDaForca = () => {
         if(!word.includes(chute)){
             setTries(t => t - 1);
 
-            
-            console.log(tries);
+     
         }
     
-    console.log(word)
+
     setGuessedWord([...word]);
 
     }
@@ -68,8 +66,9 @@ export const JogoDaForca = () => {
                 setShowDialog(true);
                
             }
+        
             else if(tries === 0){
-                setMensagem(`Que pena, você perdeu, a palavra era ${secretWord.join('')}`)
+                setMensagem(`Quase lá! A palavra correta era ${secretWord.join('')} . Continue tentando, você vai conseguir!`)
                 setShowDialog(true)
             }
 

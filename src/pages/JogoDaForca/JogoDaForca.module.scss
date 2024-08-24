@@ -1,38 +1,33 @@
 .jogoDaForca{
     @include g.size(100vh, 100%);
+    @include g.flex-all-center;
     background-color: g.$bg-dark;
     color: g.$text-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     align-content: center;
     flex-direction: column;
-    input{
-        width: 100px;
-        height: 100px;
-    }
+
 
     .letras{
         @include g.flex-all-center;
         width: 30%;
         flex-wrap: wrap;
-        gap: g.toRem(2);
+        gap: g.toRem(1);
 
         @include g.breakpoint(desktop){
             width: 50%;
-            gap: g.toRem(4);
         }
         @include g.breakpoint(laptop){
             width: 90%;
-            gap: g.toRem(4);
+            gap: g.toRem(2);
         }
         @include g.breakpoint(tablet){
             width: 70%;
-            gap: g.toRem(24);
+            gap: g.toRem(2);
         }
         @include g.breakpoint(mobile){
-            width: 95%;
+            width: 90%;
             gap: 0;
+            overflow: scroll;
         }
     }
   

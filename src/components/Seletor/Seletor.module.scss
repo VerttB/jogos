@@ -4,9 +4,15 @@
     flex-direction: column;
     gap: g.toRem(16);
     text-align: center;
+   
+    overflow-y: scroll;
     .titulo{
         color: g.$text-color;
         font-size: g.toRem(64);
+        @include g.breakpoint(mobile){
+           font-size: g.toRem(48);
+           margin-bottom: g.toRem(12);
+        }
     }
 }
 
@@ -14,11 +20,18 @@
     width: 60%;
     gap: 12px;
     display: flex;
+    padding-bottom: g.toRem(24);
+
+    @include g.breakpoint(laptop){
+        width: 80%;
+    }
+   
 }
 .row{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    justify-items: center;
 }
 
 .column{

@@ -1,7 +1,7 @@
 @use 'sass:color';
 .dialog{
     @include g.size(60%,40%);
-    background-color: color.scale(#0C0C0C, $lightness: 5%, $alpha: -2%);
+    background-color: color.scale(#0C0C0C, $lightness: 5%, $alpha: -5%);
     color: g.$text-color;
     left: 50%;
     top: 50%;
@@ -18,7 +18,7 @@
         @include g.size(80% ,60%);
     }
     @include g.breakpoint(laptop){
-        @include g.size(50% ,70%);
+        @include g.size(50% ,80%);
     }
 
     @include g.breakpoint(mobile){
@@ -34,9 +34,6 @@
             margin-top: g.toRem(32);
         }
         @include g.breakpoint(tablet){
-            font-size: g.toRem(24);
-        }
-        @include g.breakpoint(laptop){
             font-size: g.toRem(24);
         }
         @include g.breakpoint(desktop){

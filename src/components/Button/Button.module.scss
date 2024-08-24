@@ -3,13 +3,13 @@
 
 .button{
     padding: 4px 32px;
-    
     cursor: pointer;
     background-color: #468585;
     border: none;
     font-family: g.$Poppins;
     border-radius: 8px;
     color: g.$text-color;
+    text-align: center;
 
    
     &:hover{
@@ -20,6 +20,10 @@
 .small{
     font-size: g.toRem(24);
     @include g.size($w: g.toRem(256));
+    @include g.breakpoint(mobile){
+        @include g.size($w: g.toRem(192));
+        padding: 2px 4px;
+    }
 }
 
 .normal{

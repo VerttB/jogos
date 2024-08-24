@@ -33,5 +33,10 @@ $corTecla: #F7F7F8;
             font-size: g.toRem(24);
         }
 
+        @include g.breakpoint(mobile){
+            padding: 10% 15%;
+           
+        }
+
     }
 }

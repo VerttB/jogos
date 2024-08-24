@@ -32,7 +32,6 @@ export const JogoMemoria = () => {
     const iniciarJogo = async () => {
         setShowDialog(false);
         if(dificuldade){
-            console.log('iuniciando');
             setBaralho(await Embaralhar(geradorDeCarta(dificuldade)));
             setShowMenu(false);
 
