@@ -3,17 +3,13 @@ import { Palavra } from "../../components/Forca/Palavra"
 import { Desenho} from "../../components/Forca/Personagem/Desenho"
 import style from './JogoDaForca.module.scss';
 import { Tecla } from "../../components/Forca/Tecla";
-import { forcaPalavras } from "../../constants/forcaPalavras";
+import { alfabetoForca, forcaPalavras } from "../../constants/forcaPalavras";
 import { MenuSecundario } from "../../components/MenuSecundario";
 import { Dialog } from "../../components/Dialog/Dialog";
 import { RemoverAssento } from "../../utils";
 import Seletor from "../../components/Seletor";
 
-function preencherAlfabeto(alfabeto:string[]){
-    for(let i = 0;i<26;i++){
-        alfabeto.push(String.fromCharCode(65 + i))
-    }
-}
+
 function escolhePalavra(tema : string){
     const palavras = forcaPalavras[tema]
     console.log(palavras)
@@ -30,9 +26,9 @@ export const JogoDaForca = () => {
     const [mensagem, setMensagem] = useState("")
     const [tries, setTries] = useState(6);
     const [tema, setTema] = useState("");
-    const alfabeto:string[] = [];
+    const alfabeto:string[] = alfabetoForca
 
-    preencherAlfabeto(alfabeto)
+   
 
   
  
