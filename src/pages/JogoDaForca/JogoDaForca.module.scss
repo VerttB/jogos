@@ -23,7 +23,7 @@
             gap: g.toRem(4);
         }
         @include g.breakpoint(laptop){
-            width: 70%;
+            width: 90%;
             gap: g.toRem(4);
         }
         @include g.breakpoint(tablet){
