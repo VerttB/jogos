@@ -2,12 +2,14 @@ import style from './Button.module.scss'
 
 type ButtonProps = {
     children? : String,
-    onClick?: (event?:any) => void
+    onClick?: (event?:any) => void,
+    size?: "small" |"normal" | "large"
 }
 
-export default function Button({children, onClick} : ButtonProps){
+export default function Button({children, onClick, size = "normal"} : ButtonProps){
+    
     return(
-        <button className={style.button} onClick={onClick}> 
+        <button className={`${style.button} ${style[size]} `} onClick={onClick}> 
             {children}
         </button>
     )

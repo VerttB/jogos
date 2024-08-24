@@ -1,6 +1,6 @@
 @use 'sass:color';
 .dialog{
-    @include g.size(55%,30%);
+    @include g.size(60%,40%);
     background-color: color.scale(#0C0C0C, $lightness: 5%, $alpha: -2%);
     color: g.$text-color;
     left: 50%;
@@ -24,6 +24,7 @@
     @include g.breakpoint(mobile){
         @include g.size(50%, 90%);
     }
+
 
     .titulo{
         margin-top: g.toRem(64);
@@ -56,6 +57,8 @@
         @include g.breakpoint(mobile){
             height: 30%;
         }
+
+    
     }
 }
 

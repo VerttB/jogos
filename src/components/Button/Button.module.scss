@@ -3,8 +3,7 @@
 
 .button{
     padding: 4px 32px;
-    font-size: g.toRem(48);
-    @include g.size($w: g.toRem(512));
+    
     cursor: pointer;
     background-color: #468585;
     border: none;
@@ -12,11 +11,28 @@
     border-radius: 8px;
     color: g.$text-color;
 
+   
+    &:hover{
+       background-color: color.scale(#468585,$lightness: 10%);
+    }
+}
+
+.small{
+    font-size: g.toRem(24);
+    @include g.size($w: g.toRem(256));
+}
+
+.normal{
+    font-size: g.toRem(48);
+    @include g.size($w: g.toRem(512));
+
     @include g.breakpoint(mobile){
         @include g.size($w: g.toRem(256));
         font-size: g.toRem(24);
     }
-    &:hover{
-       background-color: color.scale(#468585,$lightness: 10%);
-    }
+}
+
+.large{
+    font-size: g.toRem(72);
+    @include g.size($w: g.toRem(768));
 }

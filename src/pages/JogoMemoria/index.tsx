@@ -113,7 +113,10 @@ export const JogoMemoria = () => {
             <MenuSecundario jogo="Jogo da Memória" fecharMenu={handleShowMenu} regras={""}/> 
             :
             dificuldade === "" ?
-            <Seletor setDificuldade={setDificuldade}></Seletor> 
+            <Seletor 
+            setConfig={setDificuldade}
+            config={["FÁCIL", "MÉDIO", "DIFÍCIL"]}
+            titulo="Escolha a Dificuldade"></Seletor> 
             :<>
             <Tabuleiro jogoIniciado={jogoiniciado} onCardClick={onCardClick} baralho={baralho}>
             </Tabuleiro>

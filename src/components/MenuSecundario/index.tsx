@@ -17,9 +17,9 @@ export const MenuSecundario: React.FC<MenuSecundarioProps> = ({ fecharMenu, regr
     return(
         <div className={style.menuSecundario}>
             <h3 className={style.titulo}>{jogo}</h3>
-            <Button onClick={() => fecharMenu(false)}>Jogar</Button>
+            <Button  onClick={() => fecharMenu(false)}>Jogar</Button>
             <Button>{regras}</Button>
-            <Button onClick={menuPrincipal}>Menu Principal</Button> 
+            <Button  onClick={menuPrincipal}>Menu Principal</Button> 
         </div>
     )
 

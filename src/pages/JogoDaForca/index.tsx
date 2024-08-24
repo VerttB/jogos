@@ -6,27 +6,30 @@ import { Tecla } from "../../components/Forca/Tecla";
 import { forcaPalavras } from "../../constants/forcaPalavras";
 import { MenuSecundario } from "../../components/MenuSecundario";
 import { Dialog } from "../../components/Dialog/Dialog";
+import { RemoverAssento } from "../../utils";
+import Seletor from "../../components/Seletor";
 
 function preencherAlfabeto(alfabeto:string[]){
     for(let i = 0;i<26;i++){
         alfabeto.push(String.fromCharCode(65 + i))
     }
 }
-function escolhePalavra(){
-    const random = Math.floor(Math.random() * forcaPalavras.length);
-    return forcaPalavras[random]
+function escolhePalavra(tema : string){
+    const palavras = forcaPalavras[tema]
+    console.log(palavras)
+    const random = Math.floor(Math.random() * palavras.length);
+    return palavras[random]
 }
 
-const removerAcentos = (texto: string): string[] => {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').split('');
-};
+
 export const JogoDaForca = () => {
-    const [secretWord, setSecretWord] = useState(removerAcentos(escolhePalavra().toUpperCase()));
-    const [guessedWord, setGuessedWord] = useState(Array(secretWord.length).fill(' '));
+    const [secretWord, setSecretWord] = useState([""]);
+    const [guessedWord, setGuessedWord] = useState([""]);
     const [showMenu, setShowMenu] = useState(true);
     const [showDialog, setShowDialog] = useState(false);
     const [mensagem, setMensagem] = useState("")
     const [tries, setTries] = useState(6);
+    const [tema, setTema] = useState("");
     const alfabeto:string[] = [];
 
     preencherAlfabeto(alfabeto)
@@ -34,10 +37,11 @@ export const JogoDaForca = () => {
   
  
 
-    const resetarJogo = () => {
+    const iniciarJogo = () => {
         setShowDialog(false);
-        setSecretWord(removerAcentos(escolhePalavra().toUpperCase()));
+        setSecretWord(RemoverAssento(escolhePalavra(tema).toUpperCase()));
         setTries(6);
+
     }
 
     const isGuessRight = (chute: string) => {
@@ -69,7 +73,7 @@ export const JogoDaForca = () => {
                
             }
             else if(tries === 0){
-                setMensagem(`Que pena, você perdeu \n A palavra era ${secretWord.join('')}`)
+                setMensagem(`Que pena, você perdeu, a palavra era ${secretWord.join('')}`)
                 setShowDialog(true)
             }
 
@@ -83,36 +87,43 @@ export const JogoDaForca = () => {
    
 
     const onLetterClick = (letra:string) => {
-      
         isGuessRight(letra)
     }
 
     const handleShowMenu = (status : boolean) => {
         setShowMenu(status);
+        setTema("");
         setShowDialog(false)
     }
 
-    const iniciarJogo = () => {
-        resetarJogo();
-    }
-
     useEffect(() => {
-        if(showMenu === false &&  showDialog === false) resetarJogo()
-    },[showMenu])
+        if(tema !== "") {
+            iniciarJogo()
+        }
+      
+    }, [tema])
+
     return(
         <div className={style.jogoDaForca}>
         {showMenu
         ?
         <MenuSecundario jogo="Jogo da Forca" regras=""   fecharMenu={handleShowMenu}/> 
         :
-
+        tema === "" 
+        ? 
+        <Seletor config={Object.keys(forcaPalavras)} 
+                 setConfig={setTema}
+                 btnSize="small"
+                 titulo={"Escolha o tema"}
+                 layout="row"></Seletor>
+        :
         <>
         <Desenho tentativas={tries}></Desenho>
         <Palavra palavra={guessedWord}></Palavra>
         <div className={style.letras}>
         {alfabeto.map(a => <Tecla key={a} secretWord={secretWord} onClick={onLetterClick} letra={a}></Tecla>)}
         </div>
-        <Dialog win={true} clickBackToMenu={() => handleShowMenu(true)} clickPlayAgain={resetarJogo} open={showDialog} mensagem={mensagem} ></Dialog>
+        <Dialog win={true} clickBackToMenu={() => handleShowMenu(true)} clickPlayAgain={iniciarJogo} open={showDialog} mensagem={mensagem} ></Dialog>
         </>
         
         }

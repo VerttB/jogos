@@ -9,3 +9,17 @@
         font-size: g.toRem(64);
     }
 }
+
+.seletores{
+    width: 60%;
+    gap: 12px;
+    display: flex;
+}
+.row{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.column{
+   flex-direction: column;
+}
