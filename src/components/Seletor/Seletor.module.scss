@@ -4,11 +4,14 @@
     flex-direction: column;
     gap: g.toRem(16);
     text-align: center;
-   
-    overflow-y: scroll;
+    justify-content: center;
+    @include g.breakpoint(mobile){
+        overflow-y: scroll;
+    }
     .titulo{
         color: g.$text-color;
         font-size: g.toRem(64);
+
         @include g.breakpoint(mobile){
            font-size: g.toRem(48);
            margin-bottom: g.toRem(12);
@@ -17,11 +20,11 @@
 }
 
 .seletores{
-    width: 60%;
+    width: fit-content;
     gap: 12px;
     display: flex;
     padding-bottom: g.toRem(24);
-
+    text-align: center;
     @include g.breakpoint(laptop){
         width: 80%;
     }
@@ -36,4 +39,6 @@
 
 .column{
    flex-direction: column;
+   justify-content: center;
+   justify-items: center;
 }

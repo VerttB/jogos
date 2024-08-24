@@ -2,13 +2,13 @@ import { DificuldadeMemoria } from "../../enums/Dificuldade-enum";
 
 const selecionaDificuldade = (dificuldade : string) => {
     switch(dificuldade){
-        case "FACIL":
+        case "FÁCIL":
             return DificuldadeMemoria.FACIL; 
             
-        case "MEDIO":
+        case "MÉDIO":
             return DificuldadeMemoria.MEDIO;
             
-        case "DIFICIL":
+        case "DIFÍCIL":
             return DificuldadeMemoria.DIFICIL;
             
         default:

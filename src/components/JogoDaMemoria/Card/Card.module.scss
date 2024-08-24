@@ -8,9 +8,6 @@
     transition: 0.5s;
     cursor: pointer;
 
-
-
-
     @include g.breakpoint(desktop){
         @include g.size(calc(var(--tamanho) * 1.5rem),calc(var(--tamanho) * 1rem));
     }
@@ -22,6 +19,9 @@
     }
     @include g.breakpoint(mobile){
         @include g.size(calc(var(--tamanho) * 0.8rem),calc(var(--tamanho) * 0.5rem));
+    }
+    @include g.breakpoint(xxl){
+        @include g.size(calc(var(--tamanho) * 1.8rem),calc(var(--tamanho) * 1.25rem) );
     }
 
 
@@ -80,6 +80,11 @@
                 font-size: calc(var(--tamanho) * g.toRem(4));
                 padding: 10px;
                 border-width: 1px;
+            }
+
+            @include g.breakpoint(xxl){
+                font-size: calc(var(--tamanho) * g.toRem(12));
+                padding: 12px;
             }
     
         }

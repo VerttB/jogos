@@ -1,6 +1,6 @@
 
 .tabuleiro{
-    @include g.size(100%, 80%);
+    @include g.size(100%, 90%);
     @include g.flex-all-center;
     flex-wrap: wrap;
     align-content: center;
