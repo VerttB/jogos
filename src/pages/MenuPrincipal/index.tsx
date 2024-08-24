@@ -5,7 +5,7 @@ import { Icone } from "../../components/Icone/Icone"
 
 export default function MenuPrincipal(){
     
-    const imagemStartPath = `public/assets/game_icons/`;
+    const imagemStartPath = `/assets/game_icons/`;
     return(
         <div className={style.menuPrincipal}>
             <h3 className={style.titulo}>Escolha o jogo que deseja jogar</h3>
