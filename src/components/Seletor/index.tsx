@@ -1,4 +1,4 @@
-import { RemoverAssento } from "../../utils";
+
 import Button from "../Button";
 import style from  './Seletor.module.scss'
 
