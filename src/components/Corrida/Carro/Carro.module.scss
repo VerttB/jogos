@@ -1,0 +1,22 @@
+.mapa
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .carro{
+    height: 50px;
+    width: 50px;
+    position: relative;
+    transition: 0.5s ease-in-out;
+    left: 0;
+}
+    .direita{
+        left: 50px;
+    }
+    .esquerda{
+        right: 50px;
+    }
+}
