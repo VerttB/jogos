@@ -11,13 +11,10 @@ export const Carro = () => {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            handleMovement(event.key);  // Passa a tecla pressionada para a função de movimento
+            handleMovement(event.key);  
         };
 
-        // Adiciona o event listener ao window para capturar as teclas pressionadas
         window.addEventListener("keydown", handleKeyDown);
-
-        // Remove o event listener ao desmontar o componente
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };

@@ -1,0 +1,25 @@
+.obstaculo{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    object-fit: cover;
+    animation: moverObstaculo 5s linear forwards; // Animação de 5 segundos
+    transform: translateX(-50%);
+
+}
+.direita{
+    left: -10%;
+}
+.esquerda{
+    left: 50%;
+}
+
+
+@keyframes moverObstaculo {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
