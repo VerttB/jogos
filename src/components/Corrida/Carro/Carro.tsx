@@ -21,8 +21,10 @@ export const Carro = () => {
     }, []);
 
     return(
-        <div className={style.mapa}>
-        <div className={`${style.carro} ${andar === "direita" ? style.direita : style.esquerda}`}>Carro</div>
+      
+        <div className={`${style.carro} ${andar === "direita" ? style.direita : style.esquerda}`}>
+            <img src="src/assets/carro.png" alt="" />
         </div>
+       
     )
 }

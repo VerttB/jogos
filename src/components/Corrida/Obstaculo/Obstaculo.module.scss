@@ -1,17 +1,24 @@
 .obstaculo{
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
     position: absolute;
-    object-fit: cover;
-    animation: moverObstaculo 5s linear forwards; // Animação de 5 segundos
+    z-index: 1;
+    background-image: url("src/assets/obstaculo.png");
+    background-size: fill;  
+    background-repeat: no-repeat; 
+    background-position: center;  
+    
+    animation: moverObstaculo 5s linear forwards;
     transform: translateX(-50%);
+    top: 0;
+    
 
 }
 .direita{
-    left: -10%;
+    left: 10%;
 }
 .esquerda{
-    left: 50%;
+    left: 65%;
 }
 
 

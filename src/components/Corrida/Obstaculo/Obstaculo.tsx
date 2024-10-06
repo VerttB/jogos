@@ -5,6 +5,6 @@ interface ObstaculoProps{
 }
 export const Obstaculo = ({side}: ObstaculoProps) => {
     return(
-        <img className={`${style.obstaculo} ${style[side]}`} src="src/assets/obstaculo.png" alt="pedra" />
+        <div className={`${style.obstaculo} ${style[side]}`}></div>
     )
 }
