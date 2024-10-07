@@ -1,17 +1,18 @@
 .obstaculo{
-    width: 150px;
-    height: 150px;
+    width: auto;
+    height: auto;
     position: absolute;
-    z-index: 1;
-    background-image: url("src/assets/obstaculo.png");
-    background-size: fill;  
-    background-repeat: no-repeat; 
-    background-position: center;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     animation: moverObstaculo 5s linear forwards;
     transform: translateX(-50%);
     top: 0;
-    
+    img{
+      height: 100%;
+      width: 100%;
+    }
 
 }
 .direita{
